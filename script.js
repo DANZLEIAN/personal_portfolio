@@ -231,7 +231,9 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' && currentIndex < projectCards.length - 1) goToProject(currentIndex + 1);
 });
 
-// Desktop Drag-to-Scroll Support
+// ======================
+// Desktop Drag-to-Scroll Support (1:1 Tracking)
+// ======================
 let isDown = false;
 let startX = 0;
 let scrollLeftStart = 0;
@@ -239,20 +241,39 @@ let scrollLeftStart = 0;
 projectsContainer.addEventListener('mousedown', (e) => {
     isDown = true;
     projectsContainer.classList.add('is-dragging');
+    
+    // Disable smooth scrolling while dragging for direct 1:1 mouse tracking
+    projectsContainer.style.scrollBehavior = 'auto';
+    
     startX = e.pageX - projectsContainer.offsetLeft;
     scrollLeftStart = projectsContainer.scrollLeft;
 });
 
-window.addEventListener('mouseup', () => {
+const stopDragging = () => {
     if (!isDown) return;
     isDown = false;
     projectsContainer.classList.remove('is-dragging');
     
-    // Snap to nearest card after releasing mouse drag
-    const targetIndex = Math.round(projectsContainer.scrollLeft / projectsContainer.offsetWidth);
+    // Restore smooth scroll for the snap transition
+    projectsContainer.style.scrollBehavior = 'smooth';
+    
+    // Determine the closest card based on where the drag ended
+    const cardWidth = projectsContainer.offsetWidth;
+    const targetIndex = Math.round(projectsContainer.scrollLeft / cardWidth);
+    
     goToProject(targetIndex);
-});
+};
 
+window.addEventListener('mouseup', stopDragging);
+
+projectsContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault(); // Prevent text/image drag highlights
+    
+    const x = e.pageX - projectsContainer.offsetLeft;
+    const walk = x - startX; // Exact 1:1 distance
+    projectsContainer.scrollLeft = scrollLeftStart - walk;
+});
 projectsContainer.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
