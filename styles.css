@@ -217,18 +217,13 @@ h1 span, .logo {
     position: relative;
 }
 
-.projects-title {
-    margin-bottom: 2.5rem;
-    text-align: center;
-    font-size: 2.2rem;
-}
-
 .projects-wrapper {
     display: flex;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1200px; /* Changed from 1000px to match .skills and .services */
     margin: 0 auto;
     position: relative;
+    width: 100%;
 }
 
 .projects-container {
@@ -242,11 +237,12 @@ h1 span, .logo {
 .project-card {
     min-width: 100%;
     flex-shrink: 0;
-    padding: 0 1rem;
+    padding: 0; /* Changed from 0 1rem so the card edges align flush with the other sections */
     transition: var(--transition);
 }
 
 .project-inner-card {
+    width: 100%;
     background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
@@ -390,8 +386,8 @@ h1 span, .logo {
     background: var(--card-bg);
     border: 1px solid rgba(78, 84, 200, 0.3);
     color: var(--text);
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -409,11 +405,11 @@ h1 span, .logo {
 }
 
 .left-arrow {
-    left: -22px;
+    left: -23px;
 }
 
 .right-arrow {
-    right: -22px;
+    right: -23px;
 }
 
 .project-dots {
@@ -811,6 +807,15 @@ footer#contact {
 .links {
     display: flex;
     gap: 1.5rem;
+}
+
+@media (max-width: 1280px) {
+    .left-arrow {
+        left: 10px;
+    }
+    .right-arrow {
+        right: 10px;
+    }
 }
 
 @media (max-width: 992px) {
