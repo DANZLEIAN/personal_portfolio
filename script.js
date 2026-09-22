@@ -162,7 +162,9 @@ document.querySelectorAll('.links a').forEach(link => {
     });
 });
 
-// Project Carousel
+// ======================
+// Project Carousel & Drag/Swipe
+// ======================
 const projectsContainer = document.querySelector('.projects-container');
 const projectCards = document.querySelectorAll('.project-card');
 const leftArrow = document.querySelector('.left-arrow');
@@ -170,7 +172,7 @@ const rightArrow = document.querySelector('.right-arrow');
 const dotsContainer = document.querySelector('.project-dots');
 let currentIndex = 0;
 
-// Create dots
+// Create navigation dots
 projectCards.forEach((_, index) => {
     const dot = document.createElement('div');
     dot.classList.add('project-dot');
@@ -190,21 +192,38 @@ function updateNavigation() {
         dot.classList.toggle('active', index === currentIndex);
     });
     
-    leftArrow.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
-    rightArrow.style.visibility = currentIndex === projectCards.length - 1 ? 'hidden' : 'visible';
+    if (leftArrow && rightArrow) {
+        leftArrow.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+        rightArrow.style.visibility = currentIndex === projectCards.length - 1 ? 'hidden' : 'visible';
+    }
 }
 
 function goToProject(index) {
-    currentIndex = index;
+    currentIndex = Math.max(0, Math.min(index, projectCards.length - 1));
     projectsContainer.scrollTo({
-        left: projectCards[index].offsetLeft,
+        left: projectCards[currentIndex].offsetLeft,
         behavior: 'smooth'
     });
     updateNavigation();
 }
 
-leftArrow.addEventListener('click', () => currentIndex > 0 && goToProject(currentIndex - 1));
-rightArrow.addEventListener('click', () => currentIndex < projectCards.length - 1 && goToProject(currentIndex + 1));
+if (leftArrow) leftArrow.addEventListener('click', () => currentIndex > 0 && goToProject(currentIndex - 1));
+if (rightArrow) rightArrow.addEventListener('click', () => currentIndex < projectCards.length - 1 && goToProject(currentIndex + 1));
+
+// Sync active dot and navigation state when user scrolls or swipes natively on touch screens
+let scrollTimeout;
+projectsContainer.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        const containerLeft = projectsContainer.scrollLeft;
+        const containerWidth = projectsContainer.offsetWidth;
+        const newIndex = Math.round(containerLeft / containerWidth);
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < projectCards.length) {
+            currentIndex = newIndex;
+            updateNavigation();
+        }
+    }, 50);
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
@@ -212,6 +231,39 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight' && currentIndex < projectCards.length - 1) goToProject(currentIndex + 1);
 });
 
+// Desktop Drag-to-Scroll Support
+let isDown = false;
+let startX = 0;
+let scrollLeftStart = 0;
+
+projectsContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    projectsContainer.classList.add('is-dragging');
+    startX = e.pageX - projectsContainer.offsetLeft;
+    scrollLeftStart = projectsContainer.scrollLeft;
+});
+
+window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    projectsContainer.classList.remove('is-dragging');
+    
+    // Snap to nearest card after releasing mouse drag
+    const targetIndex = Math.round(projectsContainer.scrollLeft / projectsContainer.offsetWidth);
+    goToProject(targetIndex);
+});
+
+projectsContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - projectsContainer.offsetLeft;
+    const walk = (x - startX) * 1.5; // Drag sensitivity
+    projectsContainer.scrollLeft = scrollLeftStart - walk;
+});
+
+// ======================
+// Scroll Animations
+// ======================
 const animateOnScroll = () => {
     const animatedElements = document.querySelectorAll(
         '.animate-fade, .animate-slide-left, .animate-slide-right, .animate-slide-up'
@@ -293,8 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.profile-image').classList.add('animate-slide-left');
     document.querySelector('.intro-text').classList.add('animate-slide-right', 'delay-1');
 });
-
-
 
 // Initialize
 updateNavigation();
