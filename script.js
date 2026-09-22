@@ -206,20 +206,6 @@ function goToProject(index) {
 leftArrow.addEventListener('click', () => currentIndex > 0 && goToProject(currentIndex - 1));
 rightArrow.addEventListener('click', () => currentIndex < projectCards.length - 1 && goToProject(currentIndex + 1));
 
-// Initialize videos
-document.querySelectorAll('.video-container video').forEach(video => {
-    video.play().catch(e => console.log('Autoplay prevented:', e));
-});
-
-// Click to show overlay on mobile
-if (window.innerWidth <= 768) {
-    document.querySelectorAll('.video-container').forEach(container => {
-        container.addEventListener('click', () => {
-            container.classList.toggle('show-overlay');
-        });
-    });
-}
-
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && currentIndex > 0) goToProject(currentIndex - 1);
