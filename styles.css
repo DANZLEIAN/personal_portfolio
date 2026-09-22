@@ -237,30 +237,35 @@ h1 span, .logo {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
-    padding: 20px 0; /* Prevents card hover translateY from clipping */
+    scroll-snap-type: x mandatory;   /* Gives the smooth, native mobile flick & lock */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;            /* Hide scrollbar Firefox */
+    -ms-overflow-style: none;         /* Hide scrollbar IE/Edge */
+    padding: 20px 0;                  /* Gives room for the hover lift without clipping */
     cursor: grab;
     user-select: none;
 }
 
 .projects-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar Chrome/Safari */
+    display: none;                    /* Hide scrollbar Chrome/Safari */
 }
 
 .projects-container.is-dragging {
     cursor: grabbing;
-    scroll-behavior: auto !important;
+    scroll-snap-type: none;           /* Free movement while dragging with mouse */
 }
 
 .project-card {
     min-width: 100%;
-    flex-shrink: 0;
+    width: 100%;
+    flex: 0 0 100%;
+    scroll-snap-align: start;         /* Lock point for each project */
+    scroll-snap-stop: always;
     padding: 0;
     transition: var(--transition);
 }
 
-/* Prevent images and links from triggering browser file drags */
+/* Prevent image dragging from interfering */
 .projects-container img,
 .projects-container a {
     -webkit-user-drag: none;
