@@ -117,6 +117,7 @@ header {
     cursor: pointer;
     transition: var(--transition);
     margin-top: 1.5rem;
+    margin-right: 0.75rem; /* Adds space between the buttons */
     display: inline-block;
     box-shadow: 0 4px 15px rgba(78,84,200,0.3);
 }
@@ -124,6 +125,7 @@ header {
 .hire-me:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(78,84,200,0.4);
+    animation: pulse 1s infinite; /* Only animates on mouse hover */
 }
 
 .hire-me:active {
