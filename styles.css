@@ -247,14 +247,16 @@ h1 span, .logo {
 }
 
 .project-inner-card {
-    width: 100%;
+    display: flex;
+    flex-direction: row; /* Side-by-side on desktop */
+    align-items: stretch;
+    min-height: 420px;
     background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow);
     border: 1px solid rgba(78, 84, 200, 0.15);
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     transition: var(--transition);
 }
 
@@ -267,24 +269,29 @@ h1 span, .logo {
 /* Thumbnail Section */
 .project-preview {
     position: relative;
-    width: 100%;
-    /* Use aspect-ratio instead of fixed height so it scales cleanly with the 1200px width */
-    aspect-ratio: 16 / 9; 
-    max-height: 520px; /* Caps the maximum height on ultra-wide screens */
-    background: #0f1220;
+    width: 55%;
+    flex-shrink: 0;
+    background: radial-gradient(circle at center, #1b3a6b 0%, #0d1b2e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
     overflow: hidden;
 }
 
 .project-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Shows the full mockup without cutting the bottom off */
-    object-position: center;
-    transition: transform 0.5s ease;
+    max-width: 90%;
+    max-height: 340px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s ease;
 }
 
 .project-card:hover .project-preview img {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 .project-image-badge {
@@ -306,10 +313,27 @@ h1 span, .logo {
 
 /* Card Content */
 .project-details {
-    padding: 2rem 2.2rem;
+    width: 45%;
+    padding: 3rem 2.5rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1.2rem;
+    background: var(--card-bg);
+}
+
+/* Responsive: Stack back to vertical on tablets & mobile */
+@media (max-width: 900px) {
+    .project-inner-card {
+        flex-direction: column;
+    }
+    .project-preview,
+    .project-details {
+        width: 100%;
+    }
+    .project-preview {
+        padding: 1.5rem;
+    }
 }
 
 .project-header h3 {
