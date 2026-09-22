@@ -229,39 +229,42 @@ h1 span, .logo {
     margin: 0 auto;
     position: relative;
     width: 100%;
-    overflow: hidden; /* Clips cards cleanly */
-    padding: 20px 0;   /* Prevents the 5px hover lift from clipping */
 }
 
 .projects-container {
     display: flex;
     width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+    padding: 20px 0; /* Prevents card hover translateY from clipping */
     cursor: grab;
     user-select: none;
-    touch-action: pan-y; /* Lets vertical page scrolling work naturally on touch */
-    will-change: transform;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth snap glide */
 }
 
 .projects-container::-webkit-scrollbar {
-    display: none; /* Chrome / Safari: hide scrollbar */
+    display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .projects-container.is-dragging {
     cursor: grabbing;
-    transition: none !important; /* Zero lag during active drag */
-}
-
-.projects-container img,
-.projects-container a {
-    -webkit-user-drag: none;
-    user-drag: none;
+    scroll-behavior: auto !important;
 }
 
 .project-card {
     min-width: 100%;
     flex-shrink: 0;
     padding: 0;
+    transition: var(--transition);
+}
+
+/* Prevent images and links from triggering browser file drags */
+.projects-container img,
+.projects-container a {
+    -webkit-user-drag: none;
+    user-drag: none;
 }
 
 .project-inner-card {
