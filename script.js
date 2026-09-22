@@ -306,21 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add initial animations
     document.querySelector('.profile-image').classList.add('animate-slide-left');
     document.querySelector('.intro-text').classList.add('animate-slide-right', 'delay-1');
-    
-    // Add pulse animation to hire me button
-    const hireMeBtn = document.querySelector('.hire-me');
-    hireMeBtn.classList.add('animate-pulse');
-    
-    // Remove pulse animation on hover to avoid conflict
-    hireMeBtn.addEventListener('mouseenter', () => {
-        hireMeBtn.classList.remove('animate-pulse');
-    });
-    
-    hireMeBtn.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-            hireMeBtn.classList.add('animate-pulse');
-        }, 1000);
-    });
 });
 
 
