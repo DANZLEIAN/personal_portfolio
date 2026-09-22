@@ -234,15 +234,30 @@ h1 span, .logo {
 .projects-container {
     display: flex;
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto; /* Allow dragging / swiping */
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* Snaps neatly to the card */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox: hide scrollbar */
     padding: 10px 0;
+    cursor: grab;
+    user-select: none;
+}
+
+.projects-container::-webkit-scrollbar {
+    display: none; /* Chrome / Safari: hide scrollbar */
+}
+
+.projects-container.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none; /* Disable snapping while actively dragging */
 }
 
 .project-card {
     min-width: 100%;
     flex-shrink: 0;
-    padding: 0; /* Changed from 0 1rem so the card edges align flush with the other sections */
+    padding: 0;
+    scroll-snap-align: start; /* Snap point */
     transition: var(--transition);
 }
 
@@ -479,6 +494,9 @@ h1 span, .logo {
     }
     .project-details {
         padding: 1.5rem;
+    }
+    .nav-arrow {
+        display: none !important;
     }
 }
 
