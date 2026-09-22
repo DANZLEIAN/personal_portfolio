@@ -217,6 +217,11 @@ h1 span, .logo {
     position: relative;
 }
 
+.projects-title {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
 .projects-wrapper {
     display: flex;
     align-items: center;
