@@ -234,12 +234,13 @@ h1 span, .logo {
 .projects-container {
     display: flex;
     width: 100%;
-    overflow-x: auto; /* Allow dragging / swiping */
+    overflow-x: auto;       /* Keep horizontal dragging/swiping */
+    overflow-y: hidden;     /* Prevent any vertical scrolling or clipping */
     scroll-behavior: smooth;
-    scroll-snap-type: x mandatory; /* Snaps neatly to the card */
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Firefox: hide scrollbar */
-    padding: 10px 0;
+    scrollbar-width: none;
+    padding: 20px 0;        /* Gives room for the -5px translateY hover lift */
     cursor: grab;
     user-select: none;
 }
