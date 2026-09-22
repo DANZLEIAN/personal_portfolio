@@ -251,7 +251,13 @@ h1 span, .logo {
 
 .projects-container.is-dragging {
     cursor: grabbing;
-    scroll-snap-type: none; /* Disable snapping while actively dragging */
+    scroll-snap-type: none !important; /* Disables magnetic pull during the drag */
+}
+
+.projects-container img,
+.projects-container a {
+    -webkit-user-drag: none;
+    user-drag: none;
 }
 
 .project-card {
