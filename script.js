@@ -2,7 +2,6 @@
 const themeToggle = document.getElementById('themetoggle');
 const body = document.body;
 
-// Set initial theme
 const savedTheme = localStorage.getItem('theme') || 'dark';
 body.setAttribute('data-theme', savedTheme);
 themeToggle.innerHTML = savedTheme === 'dark' 
@@ -19,16 +18,11 @@ themeToggle.addEventListener('click', () => {
         : '<i class="fas fa-sun"></i>';
 });
 
-// ======================
-// Floating Particles Effect (Fixed Version)
-// ======================
-
+// Floating Particles Effect
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
-    const body = document.body;
     
-    // Set canvas to full window size
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -36,38 +30,31 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Get appropriate particle color based on theme
     function getParticleColor() {
         return body.getAttribute('data-theme') === 'dark' 
             ? 'rgba(255, 255, 255, 0.5)' 
             : 'rgba(0, 0, 0, 0.3)';
     }
     
-    // Particle class
     class Particle {
         constructor() {
             this.reset();
             this.size = Math.random() * 3 + 1;
             this.color = getParticleColor();
         }
-        
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.speedX = Math.random() * 2 - 1;
             this.speedY = Math.random() * 2 - 1;
         }
-        
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-            
-            if (this.x < 0 || this.x > canvas.width || 
-                this.y < 0 || this.y > canvas.height) {
+            if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
                 this.reset();
             }
         }
-        
         draw() {
             ctx.fillStyle = this.color;
             ctx.beginPath();
@@ -76,28 +63,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Create particles (slightly reduced count for better performance)
     const particles = [];
     const particleCount = Math.floor(window.innerWidth * window.innerHeight / 15000);
-    
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
     
-    // Animation loop
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-        });
-        
+        particles.forEach(p => { p.update(); p.draw(); });
         connectParticles();
         requestAnimationFrame(animate);
     }
     
-    // Connect particles
     function connectParticles() {
         const connectionColor = body.getAttribute('data-theme') === 'dark' 
             ? 'rgba(255, 255, 255, 0.1)' 
@@ -107,9 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 150) {
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) {
                     ctx.strokeStyle = connectionColor;
                     ctx.lineWidth = 0.5;
                     ctx.beginPath();
@@ -120,59 +97,52 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
-    // Start animation
     animate();
     
-    // Update particles when theme changes
     themeToggle.addEventListener('click', () => {
-        particles.forEach(particle => {
-            particle.color = getParticleColor();
-        });
+        particles.forEach(p => { p.color = getParticleColor(); });
     });
 });
 
-// Mobile Menu
+// Mobile Navigation Menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Close menu when clicking outside
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.links') && !e.target.closest('#hamburger')) {
         navLinks.classList.remove('active');
     }
 });
 
-// Smooth scrolling for navigation
 document.querySelectorAll('.links a').forEach(link => {
     link.addEventListener('click', (e) => {
         if (link.getAttribute('href').startsWith('#') && !link.hasAttribute('download')) {
             e.preventDefault();
-            const targetId = link.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             navLinks.classList.remove('active');
         }
     });
 });
 
-// ======================
-// Project Carousel & Drag/Swipe
-// ======================
+// ============================================
+// Ultra-Smooth 1:1 Hardware-Accelerated Carousel
+// ============================================
 const projectsContainer = document.querySelector('.projects-container');
 const projectCards = document.querySelectorAll('.project-card');
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 const dotsContainer = document.querySelector('.project-dots');
-let currentIndex = 0;
 
-// Create navigation dots
+let currentIndex = 0;
+let isDragging = false;
+let startX = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+let animationID = 0;
+let hasMoved = false;
+
+// Generate dots
 projectCards.forEach((_, index) => {
     const dot = document.createElement('div');
     dot.classList.add('project-dot');
@@ -183,14 +153,9 @@ projectCards.forEach((_, index) => {
 
 const dots = document.querySelectorAll('.project-dot');
 
-function updateNavigation() {
-    projectCards.forEach((card, index) => {
-        card.classList.toggle('active', index === currentIndex);
-    });
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-    });
+function updateUI() {
+    projectCards.forEach((card, i) => card.classList.toggle('active', i === currentIndex));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
     
     if (leftArrow && rightArrow) {
         leftArrow.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
@@ -198,174 +163,121 @@ function updateNavigation() {
     }
 }
 
-function goToProject(index) {
-    currentIndex = Math.max(0, Math.min(index, projectCards.length - 1));
-    projectsContainer.scrollTo({
-        left: projectCards[currentIndex].offsetLeft,
-        behavior: 'smooth'
-    });
-    updateNavigation();
+function setSliderPosition() {
+    projectsContainer.style.transform = `translateX(${currentTranslate}px)`;
 }
 
+function animation() {
+    setSliderPosition();
+    if (isDragging) requestAnimationFrame(animation);
+}
+
+function goToProject(index) {
+    currentIndex = Math.max(0, Math.min(index, projectCards.length - 1));
+    currentTranslate = -currentIndex * projectsContainer.offsetWidth;
+    prevTranslate = currentTranslate;
+    setSliderPosition();
+    updateUI();
+}
+
+// Pointer Events (Touch + Mouse unified)
+function pointerDown(e) {
+    isDragging = true;
+    hasMoved = false;
+    startX = e.clientX;
+    projectsContainer.classList.add('is-dragging');
+    animationID = requestAnimationFrame(animation);
+}
+
+function pointerMove(e) {
+    if (!isDragging) return;
+    const currentX = e.clientX;
+    const diff = currentX - startX;
+    
+    if (Math.abs(diff) > 5) hasMoved = true;
+    currentTranslate = prevTranslate + diff;
+}
+
+function pointerUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    cancelAnimationFrame(animationID);
+    projectsContainer.classList.remove('is-dragging');
+    
+    const movedBy = currentTranslate - prevTranslate;
+    const swipeThreshold = projectsContainer.offsetWidth * 0.18; // 18% drag triggers slide
+
+    if (movedBy < -swipeThreshold && currentIndex < projectCards.length - 1) {
+        currentIndex += 1;
+    } else if (movedBy > swipeThreshold && currentIndex > 0) {
+        currentIndex -= 1;
+    }
+
+    goToProject(currentIndex);
+}
+
+// Prevent button/link clicks if the user was actively dragging
+projectsContainer.addEventListener('click', (e) => {
+    if (hasMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+}, true);
+
+projectsContainer.addEventListener('pointerdown', pointerDown);
+window.addEventListener('pointermove', pointerMove);
+window.addEventListener('pointerup', pointerUp);
+window.addEventListener('pointercancel', pointerUp);
+
+// Arrow buttons
 if (leftArrow) leftArrow.addEventListener('click', () => currentIndex > 0 && goToProject(currentIndex - 1));
 if (rightArrow) rightArrow.addEventListener('click', () => currentIndex < projectCards.length - 1 && goToProject(currentIndex + 1));
 
-// Sync active dot and navigation state when user scrolls or swipes natively on touch screens
-let scrollTimeout;
-projectsContainer.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        const containerLeft = projectsContainer.scrollLeft;
-        const containerWidth = projectsContainer.offsetWidth;
-        const newIndex = Math.round(containerLeft / containerWidth);
-        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < projectCards.length) {
-            currentIndex = newIndex;
-            updateNavigation();
-        }
-    }, 50);
-});
-
-// Keyboard navigation
+// Keyboard support
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft' && currentIndex > 0) goToProject(currentIndex - 1);
     if (e.key === 'ArrowRight' && currentIndex < projectCards.length - 1) goToProject(currentIndex + 1);
 });
 
-// ======================
-// Desktop Drag-to-Scroll Support (1:1 Tracking)
-// ======================
-let isDown = false;
-let startX = 0;
-let scrollLeftStart = 0;
+// Window resize sync
+window.addEventListener('resize', () => goToProject(currentIndex));
 
-projectsContainer.addEventListener('mousedown', (e) => {
-    isDown = true;
-    projectsContainer.classList.add('is-dragging');
-    
-    // Disable smooth scrolling while dragging for direct 1:1 mouse tracking
-    projectsContainer.style.scrollBehavior = 'auto';
-    
-    startX = e.pageX - projectsContainer.offsetLeft;
-    scrollLeftStart = projectsContainer.scrollLeft;
-});
-
-const stopDragging = () => {
-    if (!isDown) return;
-    isDown = false;
-    projectsContainer.classList.remove('is-dragging');
-    
-    // Restore smooth scroll for the snap transition
-    projectsContainer.style.scrollBehavior = 'smooth';
-    
-    // Determine the closest card based on where the drag ended
-    const cardWidth = projectsContainer.offsetWidth;
-    const targetIndex = Math.round(projectsContainer.scrollLeft / cardWidth);
-    
-    goToProject(targetIndex);
-};
-
-window.addEventListener('mouseup', stopDragging);
-
-projectsContainer.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault(); // Prevent text/image drag highlights
-    
-    const x = e.pageX - projectsContainer.offsetLeft;
-    const walk = x - startX; // Exact 1:1 distance
-    projectsContainer.scrollLeft = scrollLeftStart - walk;
-});
-projectsContainer.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - projectsContainer.offsetLeft;
-    const walk = (x - startX) * 1.5; // Drag sensitivity
-    projectsContainer.scrollLeft = scrollLeftStart - walk;
-});
-
-// ======================
 // Scroll Animations
-// ======================
 const animateOnScroll = () => {
     const animatedElements = document.querySelectorAll(
         '.animate-fade, .animate-slide-left, .animate-slide-right, .animate-slide-up'
     );
-
     const skillsBoxes = document.querySelectorAll('.skills-details .box');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // For regular animated elements
-                if (entry.target.classList.contains('animate-fade') || 
-                    entry.target.classList.contains('animate-slide-left') || 
-                    entry.target.classList.contains('animate-slide-right') || 
-                    entry.target.classList.contains('animate-slide-up')) {
-                    
-                    entry.target.classList.remove('reset-animation');
-                    void entry.target.offsetWidth; // Force reflow
-                    
-                    if (entry.target.classList.contains('animate-fade')) {
-                        entry.target.classList.add('animate-fade');
-                    } else if (entry.target.classList.contains('animate-slide-left')) {
-                        entry.target.classList.add('animate-slide-left');
-                    } else if (entry.target.classList.contains('animate-slide-right')) {
-                        entry.target.classList.add('animate-slide-right');
-                    } else if (entry.target.classList.contains('animate-slide-up')) {
-                        entry.target.classList.add('animate-slide-up');
-                    }
-                }
+                entry.target.classList.remove('reset-animation');
+                void entry.target.offsetWidth;
+                entry.target.classList.add(entry.target.classList[0]);
                 
-                // For skills boxes
                 if (entry.target.classList.contains('skills')) {
-                    skillsBoxes.forEach((box, index) => {
-                        setTimeout(() => {
-                            box.classList.add('show');
-                        }, index * 200);
-                    });
+                    skillsBoxes.forEach((box, i) => setTimeout(() => box.classList.add('show'), i * 200));
                 }
             } else {
-                // For regular animated elements
-                if (entry.target.classList.contains('animate-slide-left')) {
-                    entry.target.classList.add('reset-animation', 'slide-left');
-                } else if (entry.target.classList.contains('animate-slide-right')) {
-                    entry.target.classList.add('reset-animation', 'slide-right');
-                } else if (entry.target.classList.contains('animate-slide-up')) {
-                    entry.target.classList.add('reset-animation', 'slide-up');
-                } else if (entry.target.classList.contains('animate-fade')) {
-                    entry.target.classList.add('reset-animation');
-                }
-                
-                // For skills boxes
+                entry.target.classList.add('reset-animation');
                 if (entry.target.classList.contains('skills')) {
-                    skillsBoxes.forEach(box => {
-                        box.classList.remove('show');
-                    });
+                    skillsBoxes.forEach(box => box.classList.remove('show'));
                 }
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-    
-    // Also observe the skills section
+    animatedElements.forEach(el => observer.observe(el));
     const skillsSection = document.querySelector('.skills');
-    if (skillsSection) {
-        observer.observe(skillsSection);
-    }
+    if (skillsSection) observer.observe(skillsSection);
 };
 
-// Call the function when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
-    
-    // Add initial animations
     document.querySelector('.profile-image').classList.add('animate-slide-left');
     document.querySelector('.intro-text').classList.add('animate-slide-right', 'delay-1');
 });
 
 // Initialize
-updateNavigation();
+goToProject(0);
