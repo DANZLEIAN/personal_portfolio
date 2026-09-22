@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ======================
-// Mobile Navigation
+// Mobile Navigation Menu
 // ======================
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.links');
@@ -151,139 +151,6 @@ document.querySelectorAll('.links a').forEach(link => {
         }
     });
 });
-
-// ============================================
-// Project Carousel (Smooth Swiping + Mouse Drag)
-// ============================================
-const projectsContainer = document.querySelector('.projects-container');
-const projectCards = document.querySelectorAll('.project-card');
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
-const dotsContainer = document.querySelector('.project-dots');
-let currentIndex = 0;
-
-// Create navigation dots
-projectCards.forEach((_, index) => {
-    const dot = document.createElement('div');
-    dot.classList.add('project-dot');
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToProject(index));
-    dotsContainer.appendChild(dot);
-});
-
-const dots = document.querySelectorAll('.project-dot');
-
-function updateNavigation() {
-    projectCards.forEach((card, index) => {
-        card.classList.toggle('active', index === currentIndex);
-    });
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-    });
-    
-    if (leftArrow && rightArrow) {
-        leftArrow.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
-        rightArrow.style.visibility = currentIndex === projectCards.length - 1 ? 'hidden' : 'visible';
-    }
-}
-
-function goToProject(index) {
-    currentIndex = Math.max(0, Math.min(index, projectCards.length - 1));
-    const cardWidth = projectsContainer.clientWidth;
-    
-    projectsContainer.scrollTo({
-        left: currentIndex * cardWidth,
-        behavior: 'smooth'
-    });
-    updateNavigation();
-}
-
-if (leftArrow) {
-    leftArrow.addEventListener('click', () => {
-        if (currentIndex > 0) goToProject(currentIndex - 1);
-    });
-}
-
-if (rightArrow) {
-    rightArrow.addEventListener('click', () => {
-        if (currentIndex < projectCards.length - 1) goToProject(currentIndex + 1);
-    });
-}
-
-// Sync active dots when user swipes natively on mobile
-let scrollTimeout;
-projectsContainer.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        const cardWidth = projectsContainer.clientWidth;
-        if (cardWidth > 0) {
-            const newIndex = Math.round(projectsContainer.scrollLeft / cardWidth);
-            if (newIndex !== currentIndex && newIndex >= 0 && newIndex < projectCards.length) {
-                currentIndex = newIndex;
-                updateNavigation();
-            }
-        }
-    }, 60);
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft' && currentIndex > 0) goToProject(currentIndex - 1);
-    if (e.key === 'ArrowRight' && currentIndex < projectCards.length - 1) goToProject(currentIndex + 1);
-});
-
-// Desktop Drag-to-Scroll
-let isMouseDown = false;
-let startX = 0;
-let initialScrollLeft = 0;
-let hasDragged = false;
-
-projectsContainer.addEventListener('mousedown', (e) => {
-    isMouseDown = true;
-    hasDragged = false;
-    startX = e.pageX;
-    initialScrollLeft = projectsContainer.scrollLeft;
-    projectsContainer.classList.add('is-dragging');
-});
-
-window.addEventListener('mousemove', (e) => {
-    if (!isMouseDown) return;
-    const distance = e.pageX - startX;
-    if (Math.abs(distance) > 5) {
-        hasDragged = true;
-    }
-    projectsContainer.scrollLeft = initialScrollLeft - distance;
-});
-
-window.addEventListener('mouseup', (e) => {
-    if (!isMouseDown) return;
-    isMouseDown = false;
-    projectsContainer.classList.remove('is-dragging');
-    
-    if (hasDragged) {
-        const cardWidth = projectsContainer.clientWidth;
-        const dragOffset = e.pageX - startX;
-        
-        // If dragged more than 60px, switch page, otherwise snap back
-        if (dragOffset < -60 && currentIndex < projectCards.length - 1) {
-            goToProject(currentIndex + 1);
-        } else if (dragOffset > 60 && currentIndex > 0) {
-            goToProject(currentIndex - 1);
-        } else {
-            goToProject(currentIndex);
-        }
-    }
-});
-
-// Prevent link triggers if the user was dragging
-projectsContainer.addEventListener('click', (e) => {
-    if (hasDragged) {
-        e.preventDefault();
-        e.stopPropagation();
-        hasDragged = false;
-    }
-}, true);
 
 // ======================
 // Scroll Animations
@@ -363,6 +230,3 @@ document.addEventListener('DOMContentLoaded', () => {
     if (profileImg) profileImg.classList.add('animate-slide-left');
     if (introTxt) introTxt.classList.add('animate-slide-right', 'delay-1');
 });
-
-// Run initial layout setup
-updateNavigation();
