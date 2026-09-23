@@ -66,33 +66,6 @@ navLinks.forEach(link => {
     });
 });
 
-// Active link highlighting on scroll
-const trackedSections = document.querySelectorAll('section');
-window.addEventListener('scroll', () => {
-    let currentId = '';
-    
-    // Check if user reached the bottom of the viewport
-    const isAtBottom = (window.innerHeight + window.pageYOffset) >= (document.documentElement.scrollHeight - 50);
-
-    if (isAtBottom && trackedSections.length > 0) {
-        currentId = trackedSections[trackedSections.length - 1].getAttribute('id');
-    } else {
-        trackedSections.forEach(section => {
-            const sectionTop = section.offsetTop - 200;
-            if (window.scrollY >= sectionTop) {
-                currentId = section.getAttribute('id');
-            }
-        });
-    }
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentId}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
 // ======================
 // Scroll Animations
 // ======================
