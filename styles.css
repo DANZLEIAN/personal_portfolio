@@ -126,13 +126,15 @@ body {
     transition: var(--transition);
 }
 
-.sidebar-link:hover {
+.sidebar-link:hover,
+.sidebar-link.active {
     background: rgba(78, 84, 200, 0.12);
     color: var(--primary);
     transform: translateX(4px);
 }
 
-.sidebar-link:hover i {
+.sidebar-link:hover i,
+.sidebar-link.active i {
     color: var(--primary);
 }
 
