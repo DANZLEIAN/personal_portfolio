@@ -919,26 +919,31 @@ footer#contact {
         left: 0;
         right: 0;
         width: 100%;
-        background: var(--nav-glass);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: var(--card-bg); /* Uses pure solid white in light mode, solid navy in dark mode */
         border: 1px solid var(--nav-border);
         border-radius: 20px;
         flex-direction: column;
         padding: 1.5rem 1rem;
         gap: 0.75rem;
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-10px);
         transition: all 0.3s ease;
+        z-index: 1001; /* Keeps it above everything else on the page */
     }
     
     .links a {
         width: 100%;
         text-align: center;
-        padding: 0.7rem;
-        font-size: 1rem;
+        padding: 0.75rem 1rem;
+        font-size: 1.05rem;
+        color: var(--text);
+        display: block;
+    }
+
+    .links a:hover {
+        background: rgba(78, 84, 200, 0.08);
     }
     
     .links.active {
