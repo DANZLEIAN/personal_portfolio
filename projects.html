@@ -56,20 +56,22 @@
 <canvas id="particles"></canvas>
 <body>
     <!-- Consistent Navigation Header -->
-    <header>
-        <div class="logo">Danzle</div>
+    <header id="navbar">
+        <a href="index.html" class="logo">
+            Danzle<span>.</span>
+        </a>
         <nav>
-            <div class="links">
+            <div class="links" id="nav-links">
                 <a href="index.html#about">About</a>
                 <a href="index.html#projects">Projects</a>
                 <a href="index.html#skills">Skills</a>
                 <a href="index.html#services">Services</a>
                 <a href="#contact">Contact</a>
-                <button class="theme" id="themetoggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
             </div>
-            <div class="hamburger" id="hamburger">
+            <button class="theme" id="themetoggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>

@@ -230,3 +230,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (profileImg) profileImg.classList.add('animate-slide-left');
     if (introTxt) introTxt.classList.add('animate-slide-right', 'delay-1');
 });
+
+// Header scroll elevation
+const navbar = document.getElementById('navbar');
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
