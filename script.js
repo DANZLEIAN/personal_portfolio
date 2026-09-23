@@ -163,3 +163,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroImg) heroImg.classList.add('animate-slide-left');
     if (heroTxt) heroTxt.classList.add('animate-slide-right', 'delay-1');
 });
+
+// Copy Email to Clipboard
+const copyEmailBtn = document.getElementById('copy-email-btn');
+const copyBadge = document.getElementById('copy-badge');
+
+if (copyEmailBtn) {
+    copyEmailBtn.addEventListener('click', () => {
+        const email = copyEmailBtn.getAttribute('data-email');
+        navigator.clipboard.writeText(email).then(() => {
+            if (copyBadge) {
+                copyBadge.classList.add('visible');
+                setTimeout(() => {
+                    copyBadge.classList.remove('visible');
+                }, 2000);
+            }
+        }).catch(err => {
+            console.error('Failed to copy email:', err);
+        });
+    });
+}

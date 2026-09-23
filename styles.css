@@ -151,7 +151,7 @@ body {
 
 .contact-subtext {
     font-size: 0.72rem;
-    color: var(--gray);
+    color: var(--text);
     line-height: 1.4;
     margin: 0;
     letter-spacing: 0.2px;
