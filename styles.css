@@ -146,7 +146,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
 }
 
 .contact-subtext {
@@ -154,29 +154,80 @@ body {
     color: var(--gray);
     line-height: 1.4;
     margin: 0;
+    letter-spacing: 0.2px;
 }
 
-.sidebar-email-link {
+/* Styled button with zero default browser link styling */
+.sidebar-email-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.3rem 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    text-decoration: none !important;
+    transition: var(--transition);
+    width: fit-content;
+}
+
+.sidebar-email-btn .email-text {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text) !important;
+    text-decoration: none !important;
+    letter-spacing: 0.2px;
+    transition: color 0.2s ease;
+}
+
+.sidebar-email-btn i {
     font-size: 0.82rem;
+    color: var(--primary) !important;
+    transition: transform 0.2s ease;
+}
+
+/* Subtle hover state */
+.sidebar-email-btn:hover .email-text {
+    color: var(--primary) !important;
+}
+
+.sidebar-email-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* Prevent blue/red active focus flashes */
+.sidebar-email-btn:active,
+.sidebar-email-btn:focus {
+    outline: none !important;
+    color: var(--text) !important;
+}
+
+/* Floating "Copied!" confirmation badge */
+.copy-badge {
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%) scale(0.85);
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 0.65rem;
     font-weight: 600;
-    color: var(--text);
-    text-decoration: none;
-    transition: var(--transition);
-    word-break: break-all;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(78, 84, 200, 0.35);
 }
 
-.sidebar-email-link i {
-    font-size: 0.85rem;
-    color: var(--primary);
-    transition: var(--transition);
-}
-
-.sidebar-email-link:hover {
-    color: var(--primary);
-    transform: translateX(2px);
+.copy-badge.visible {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
 }
 
 .sidebar-socials {
