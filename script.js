@@ -67,7 +67,7 @@ navLinks.forEach(link => {
 });
 
 // Active link highlighting on scroll
-const trackedSections = document.querySelectorAll('section, footer');
+const trackedSections = document.querySelectorAll('section');
 window.addEventListener('scroll', () => {
     let currentId = '';
     trackedSections.forEach(section => {
