@@ -2,22 +2,26 @@
 const themeToggle = document.getElementById('themetoggle');
 const body = document.body;
 
-// Set initial theme
-const savedTheme = localStorage.getItem('theme') || 'dark';
-body.setAttribute('data-theme', savedTheme);
-themeToggle.innerHTML = savedTheme === 'dark' 
-    ? '<i class="fas fa-moon"></i>' 
-    : '<i class="fas fa-sun"></i>';
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = body.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    themeToggle.innerHTML = newTheme === 'dark' 
+function updateThemeIcon(theme) {
+    if (!themeToggle) return;
+    themeToggle.innerHTML = theme === 'dark' 
         ? '<i class="fas fa-moon"></i>' 
         : '<i class="fas fa-sun"></i>';
-});
+}
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+}
 
 // ======================
 // Floating Particles Effect
