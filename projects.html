@@ -7,15 +7,9 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Specific adjustments for full projects catalog */
-        .all-projects-page {
-            padding-top: 110px;
-            min-height: 85vh;
-        }
-
         .filter-nav {
             display: flex;
-            justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
             gap: 0.75rem;
             margin-bottom: 2.5rem;
@@ -42,249 +36,285 @@
         }
 
         .icon-placeholder {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: var(--primary);
             opacity: 0.85;
             transition: transform 0.35s ease;
         }
 
         .project-card:hover .icon-placeholder {
-            transform: scale(1.12);
+            transform: scale(1.1);
         }
     </style>
 </head>
 <canvas id="particles"></canvas>
 <body>
-    <!-- Consistent Navigation Header -->
-    <header id="navbar">
-        <a href="index.html" class="logo">
-            Danzle<span>.</span>
-        </a>
-        <nav>
-            <div class="links" id="nav-links">
-                <a href="index.html#about">About</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#skills">Skills</a>
-                <a href="index.html#services">Services</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <button class="theme" id="themetoggle" aria-label="Toggle theme">
+    <!-- Mobile Header Bar -->
+    <div class="mobile-top-bar">
+        <a href="index.html" class="logo">Danzle<span>.</span></a>
+        <div class="mobile-actions">
+            <button class="theme" id="themetoggle-mobile" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
             </button>
             <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </div>
-        </nav>
-    </header>
-
-    <!-- Main Projects Section -->
-    <section class="projects all-projects-page">
-        <h2 class="projects-title animate-slide-up">
-            All <span>Projects & Designs</span>
-        </h2>
-
-        <!-- Quick Filter Buttons -->
-        <div class="filter-nav animate-slide-up delay-1">
-            <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
-            <button class="filter-btn" onclick="filterProjects('3d', this)">3D & Hardware</button>
-            <button class="filter-btn" onclick="filterProjects('iot', this)">IoT & Embedded</button>
-            <button class="filter-btn" onclick="filterProjects('software', this)">Web & Software</button>
         </div>
+    </div>
 
-        <div class="projects-grid">
-
-            <!-- 1. ChompTask -->
-            <div class="project-card animate-slide-up delay-1" data-category="software">
-                <div class="project-preview">
-                    <img src="images/chomptask.png" alt="ChompTask App Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i class="fas fa-gamepad icon-placeholder" style="display: none;"></i>
-                    <div class="project-image-badge">
-                        <i class="fas fa-desktop"></i> Web App
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>ChompTask</h3>
-                        <div class="project-tags">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Local Storage</span>
-                        </div>
-                    </div>
-                    <p class="project-desc">
-                        An underwater-themed productivity web application designed for streamlined task management...
-                    </p>
-                    <div class="project-actions">
-                        <a href="https://danzleian.github.io/ChompTask/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
-                    </div>
-                </div>
+    <div class="app-layout">
+        <!-- Left Sidebar Panel -->
+        <aside class="sidebar-panel" id="sidebar">
+            <div class="sidebar-top">
+                <a href="index.html" class="logo">Danzle<span>.</span></a>
             </div>
 
-            <!-- 2. EBA KIOSK -->
-            <div class="project-card animate-slide-up delay-2" data-category="3d">
-                <div class="project-preview">
-                    <img src="images/kiosk3d.png" alt="EBA Kiosk Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i class="fas fa-cube icon-placeholder" style="display: none;"></i>
-                    <div class="project-image-badge">
-                        <i class="fas fa-cube"></i> 3D Design
-                    </div>
+            <!-- Navigation pointing back to homepage sections -->
+            <nav class="sidebar-nav">
+                <a href="index.html#about" class="sidebar-link">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="projects.html" class="sidebar-link active">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="index.html#skills" class="sidebar-link">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="index.html#services" class="sidebar-link">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Services</span>
+                </a>
+                <a href="#contact" class="sidebar-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <!-- Bottom Utilities -->
+            <div class="sidebar-bottom">
+                <div class="sidebar-socials">
+                    <a href="https://www.facebook.com/danzle.ian" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/danzleian/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/SHIR0l" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                 </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>EBA KIOSK</h3>
-                        <div class="project-tags">
-                            <span>AutoCAD</span>
-                        </div>
-                    </div>
-                    <p class="project-desc">
-                        A 3D CAD model and ergonomic structural design for a standalone interactive kiosk, featuring precise dimensional planning for display housing, scanner/dispenser placement, and a stable base platform.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="3d_Design/kioskdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-file-pdf"></i> View Model (PDF)
-                        </a>
-                    </div>
+                <div class="sidebar-theme-toggle">
+                    <button class="theme" id="themetoggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <span class="theme-label">Switch Mode</span>
                 </div>
             </div>
+        </aside>
 
-            <!-- 3. Elder Rehabilitation Equipment -->
-            <div class="project-card animate-slide-up delay-3" data-category="3d">
-                <div class="project-preview">
-                    <img src="images/elders3d.png" alt="Elderly Equipment Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i class="fas fa-heartbeat icon-placeholder" style="display: none;"></i>
-                    <div class="project-image-badge">
-                        <i class="fas fa-cube"></i> 3D Design
-                    </div>
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <section class="projects-section">
+                <h2 class="section-title animate-slide-up">
+                    All <span>Projects & Designs</span>
+                </h2>
+
+                <!-- Quick Filter Buttons -->
+                <div class="filter-nav animate-slide-up delay-1">
+                    <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+                    <button class="filter-btn" onclick="filterProjects('3d', this)">3D & Hardware</button>
+                    <button class="filter-btn" onclick="filterProjects('iot', this)">IoT & Embedded</button>
+                    <button class="filter-btn" onclick="filterProjects('software', this)">Web & Software</button>
                 </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>Elder Rehabilitation Unit</h3>
-                        <div class="project-tags">
-                            <span>AutoCAD</span>
+
+                <div class="projects-grid">
+                    <!-- 1. ChompTask -->
+                    <div class="project-card animate-slide-up delay-1" data-category="software">
+                        <div class="project-preview">
+                            <img src="images/chomptask.png" alt="ChompTask App Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-desktop icon-placeholder" style="display: none;"></i>
+                            <div class="project-image-badge">
+                                <i class="fas fa-desktop"></i> Web App
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>ChompTask</h3>
+                                <div class="project-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>Local Storage</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                An underwater-themed productivity web application designed for streamlined task management.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://danzleian.github.io/ChompTask/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <p class="project-desc">
-                        A 3D CAD structural design for an elder cognitive and motor-skills rehabilitation station, featuring accessible multi-tier sorting trays, interactive control slots, and an integrated display console.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="3d_Design/eldersdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-file-pdf"></i> View Model (PDF)
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 4. Smart Library Locker System -->
-            <div class="project-card animate-slide-up delay-1" data-category="3d">
-                <div class="project-preview">
-                    <img src="images/liblocker3d.png" alt="Elderly Equipment Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i class="fas fa-heartbeat icon-placeholder" style="display: none;"></i>
-                    <div class="project-image-badge">
-                        <i class="fas fa-cube"></i> 3D Design
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>Smart Library Locker</h3>
-                        <div class="project-tags">
-                            <span>AutoCAD</span>
+                    <!-- 2. EBA KIOSK -->
+                    <div class="project-card animate-slide-up delay-2" data-category="3d">
+                        <div class="project-preview">
+                            <img src="images/kiosk3d.png" alt="EBA Kiosk Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-cube icon-placeholder" style="display: none;"></i>
+                            <div class="project-image-badge">
+                                <i class="fas fa-cube"></i> 3D Design
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>EBA KIOSK</h3>
+                                <div class="project-tags">
+                                    <span>AutoCAD</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                A 3D CAD model and ergonomic structural design for a standalone interactive kiosk with stable housing.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="3d_Design/kioskdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-file-pdf"></i> View Model
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <p class="project-desc">
-                        A 3D CAD design of a modular multi-door automated library locker housing, featuring dedicated component layouts for solenoid lock actuators, barcode scanner integration, and microcontroller circuitry bays.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="3d_Design/liblocker.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-file-pdf"></i> View Model (PDF)
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 5. ESCAPE -->
-            <div class="project-card animate-slide-up delay-1" data-category="software">
-                <div class="project-preview">
-                    <img src="images/escape.png" alt="Escape Game Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i class="fas fa-heartbeat icon-placeholder" style="display: none;"></i>
-                    <div class="project-image-badge">
-                        <i class="fas fa-gamepad"></i> Game Dev
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>ESCAPE</h3>
-                        <div class="project-tags">
-                            <span>Flutter</span>
+                    <!-- 3. Elder Rehabilitation Equipment -->
+                    <div class="project-card animate-slide-up delay-3" data-category="3d">
+                        <div class="project-preview">
+                            <img src="images/elders3d.png" alt="Elderly Equipment Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-cube icon-placeholder" style="display: none;"></i>
+                            <div class="project-image-badge">
+                                <i class="fas fa-cube"></i> 3D Design
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>Elder Rehabilitation Unit</h3>
+                                <div class="project-tags">
+                                    <span>AutoCAD</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                A 3D CAD structural design for an elder cognitive and motor-skills rehabilitation station.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="3d_Design/eldersdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-file-pdf"></i> View Model
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <p class="project-desc">
-                        A snakes-and-ladders-inspired mobile board game built with Flutter, where players navigate the grid by warping through portals and wormholes that either advance them upward or drop them down.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="APKs/app-release.apk" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-file-pdf"></i> Download Game (APK)
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 6. LOCKIFY -->
-            <div class="project-card animate-slide-up delay-1" data-category="iot">
-                <div class="project-preview">
-                    <img src="images/lockify.png" alt="LOCKIFY Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <i class="fas fa-heartbeat icon-placeholder" style="display: none;"></i>
-                    <div class="project-image-badge">
-                        <i class="fas fa-microchip"></i> Lockify
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>LOCKIFY</h3>
-                        <div class="project-tags">
-                            <span>MIT App</span>
+                    <!-- 4. Smart Library Locker System -->
+                    <div class="project-card animate-slide-up delay-1" data-category="3d">
+                        <div class="project-preview">
+                            <img src="images/liblocker3d.png" alt="Library Locker Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-cube icon-placeholder" style="display: none;"></i>
+                            <div class="project-image-badge">
+                                <i class="fas fa-cube"></i> 3D Design
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>Smart Library Locker</h3>
+                                <div class="project-tags">
+                                    <span>AutoCAD</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                A modular multi-door automated locker housing with layouts for solenoids, scanners, and circuitry.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="3d_Design/liblocker.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-file-pdf"></i> View Model
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <p class="project-desc">
-                        A mobile-controlled IoT smart lock application built with MIT App Inventor, enabling users to wirelessly lock and unlock doors directly from their smartphone with real-time access control.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="Projects/lockify.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-file-pdf"></i> View Project (PDF)
-                        </a>
+
+                    <!-- 5. ESCAPE -->
+                    <div class="project-card animate-slide-up delay-2" data-category="software">
+                        <div class="project-preview">
+                            <img src="images/escape.png" alt="Escape Game Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-gamepad icon-placeholder" style="display: none;"></i>
+                            <div class="project-image-badge">
+                                <i class="fas fa-gamepad"></i> Game Dev
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>ESCAPE</h3>
+                                <div class="project-tags">
+                                    <span>Flutter</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                A snakes-and-ladders-inspired mobile board game featuring warp portals and dynamic movement tiles.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="APKs/app-release.apk" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-download"></i> Download APK
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. LOCKIFY -->
+                    <div class="project-card animate-slide-up delay-3" data-category="iot">
+                        <div class="project-preview">
+                            <img src="images/lockify.png" alt="LOCKIFY Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <i class="fas fa-microchip icon-placeholder" style="display: none;"></i>
+                            <div class="project-image-badge">
+                                <i class="fas fa-microchip"></i> IoT Project
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>LOCKIFY</h3>
+                                <div class="project-tags">
+                                    <span>MIT App</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                Mobile-controlled IoT smart lock system built for wireless access and real-time remote control.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="Projects/lockify.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-file-pdf"></i> View Project
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <!-- Return Home Button -->
+                <div class="all-projects-container animate-slide-up delay-3">
+                    <a href="index.html" class="btn-all-projects">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Homepage</span>
+                    </a>
+                </div>
+            </section>
 
-        </div>
+            <!-- Footer -->
+            <footer id="contact" class="content-footer animate-fade">
+                <h2 class="animate-slide-up">Get In <span>Touch</span></h2>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/danzle.ian" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/danzleian/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/SHIR0l" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p>&copy; 2025 Danzle Ian B. Vale Cruz. All rights reserved.</p>
+            </footer>
+        </main>
+    </div>
 
-        <!-- Return Home Button -->
-        <div class="all-projects-container animate-slide-up delay-3">
-            <a href="index.html" class="btn-all-projects">
-                <i class="fas fa-arrow-left"></i>
-                <span>Back to Homepage</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer matching your site -->
-    <footer id="contact" class="animate-fade">
-        <h2 class="animate-slide-up">Get In Touch</h2>
-        <div class="social-links">
-            <a href="https://www.facebook.com/danzle.ian" target="_blank" rel="noopener noreferrer" class="animate-slide-up delay-1"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/danzleian/" target="_blank" rel="noopener noreferrer" class="animate-slide-up delay-2"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/SHIR0l" target="_blank" rel="noopener noreferrer" class="animate-slide-up delay-3"><i class="fab fa-telegram"></i></a>
-        </div>
-        <p class="animate-slide-up delay-4">&copy; 2025 Danzle Ian B. Vale Cruz. All rights reserved</p>
-    </footer>
-
-    <!-- Universal Script from repo -->
+    <!-- Script imports -->
     <script src="script.js"></script>
-
-    <!-- Filter script -->
     <script>
         function filterProjects(category, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));

@@ -9,219 +9,242 @@
 </head>
 <canvas id="particles"></canvas>
 <body>
-    <header id="navbar">
-        <a href="index.html" class="logo">
-            Danzle<span>.</span>
-        </a>
-        <nav>
-            <div class="links" id="nav-links">
-                <a href="index.html#about">About</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="index.html#skills">Skills</a>
-                <a href="index.html#services">Services</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <button class="theme" id="themetoggle" aria-label="Toggle theme">
+    <!-- Mobile Header Bar (Only visible on small mobile screens) -->
+    <div class="mobile-top-bar">
+        <a href="index.html" class="logo">Danzle<span>.</span></a>
+        <div class="mobile-actions">
+            <button class="theme" id="themetoggle-mobile" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
             </button>
             <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
 
-    <section class="about animate-fade" id="about">
-        <div class="profile-card">
-            <div class="profile-container">
-                <div class="profile-image animate-slide-left">
-                    <img src="images/profile.jpg" alt="Danzle">
+    <div class="app-layout">
+        <!-- Left Sidebar Panel -->
+        <aside class="sidebar-panel" id="sidebar">
+            <div class="sidebar-top">
+                <a href="index.html" class="logo">Danzle<span>.</span></a>
+            </div>
+
+            <!-- Clean Navigation (Filtered to only your active portfolio sections) -->
+            <nav class="sidebar-nav">
+                <a href="#about" class="sidebar-link active">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="#projects" class="sidebar-link">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#skills" class="sidebar-link">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#services" class="sidebar-link">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Services</span>
+                </a>
+                <a href="#contact" class="sidebar-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <!-- Bottom Utilities -->
+            <div class="sidebar-bottom">
+                <div class="sidebar-socials">
+                    <a href="https://www.facebook.com/danzle.ian" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/danzleian/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/SHIR0l" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                 </div>
-                <div class="intro-text animate-slide-right delay-1">
-                    <h1>
-                        Hi, I'm <span>Danzle Ian B. Vale Cruz</span>
-                    </h1>
-                    <p class="description">I'm a Computer Engineering graduate from CvSU CCAT passionate about building practical software and hardware-focused designs. My technical toolkit spans software development with Flutter, Python, and HTML/CSS/JS, alongside 3D design and drafting in AutoCAD. I applied these skills to develop projects like Escape and GAME GROUNDS, and I’m always learning new ways to optimize user experiences. Let's build something great together!</p>
-                    <button class="hire-me">
-                        <a download href="My_Credentials/myresume.pdf">My Resume</a>
+                <div class="sidebar-theme-toggle">
+                    <button class="theme" id="themetoggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
                     </button>
-                    <button class="hire-me">
-                        <a download href="My_Credentials/MyCV.pdf">My CV</a>
-                    </button>
+                    <span class="theme-label">Switch Mode</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </aside>
 
-    <section class="projects" id="projects">
-        <h2 class="projects-title animate-slide-up">My Projects</h2>
-        
-        <div class="projects-grid">
-            <!-- Project 1 -->
-            <div class="project-card animate-slide-up delay-1">
-                <div class="project-preview">
-                    <img src="images/chomptask.png" alt="ChompTask App Preview">
-                    <div class="project-image-badge">
-                        <i class="fas fa-gamepad"></i> Web Platform
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Hero / About Section -->
+            <section class="about-hero animate-fade" id="about">
+                <div class="hero-card">
+                    <!-- Controlled compact portrait -->
+                    <div class="hero-image-wrapper animate-slide-left">
+                        <img src="images/profile.jpg" alt="Danzle Ian B. Vale Cruz">
                     </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>ChompTask</h3>
-                        <div class="project-tags">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>Local Storage</span>
+
+                    <div class="hero-text animate-slide-right delay-1">
+                        <h1>Hi, I'm <span>Danzle Ian B. Vale Cruz</span></h1>
+                        <p class="description">
+                            I'm a Computer Engineering graduate from CvSU CCAT passionate about building practical software and hardware-focused designs. My technical toolkit spans software development with Flutter, Python, and HTML/CSS/JS, alongside 3D design and drafting in AutoCAD. I applied these skills to develop projects like Escape and GAME GROUNDS, and I’m always learning new ways to optimize user experiences. Let's build something great together!
+                        </p>
+                        
+                        <div class="hero-actions">
+                            <a download href="My_Credentials/myresume.pdf" class="hire-me">My Resume</a>
+                            <a download href="My_Credentials/MyCV.pdf" class="hire-me">My CV</a>
                         </div>
                     </div>
-                    <p class="project-desc">
-                        An underwater-themed productivity web application designed for streamlined task management...
-                    </p>
-                    <div class="project-actions">
-                        <a href="https://danzleian.github.io/ChompTask/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
-                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Project 2 -->
-            <div class="project-card animate-slide-up delay-2">
-                <div class="project-preview">
-                    <img src="images/kiosk3d.png" alt="Project 2 Preview">
-                    <div class="project-image-badge">
-                        <i class="fas fa-cube"></i> 3D Design
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>EBA KIOSK</h3>
-                        <div class="project-tags">
-                            <span>AutoCAD</span>
+            <!-- Projects Section -->
+            <section class="projects-section" id="projects">
+                <h2 class="section-title animate-slide-up">My <span>Projects</span></h2>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card animate-slide-up delay-1">
+                        <div class="project-preview">
+                            <img src="images/chomptask.png" alt="ChompTask App Preview">
+                            <div class="project-image-badge">
+                                <i class="fas fa-gamepad"></i> Web Platform
+                            </div>
                         </div>
-                    </div>
-                    <p class="project-desc">
-                        A 3D CAD model and ergonomic structural design for a standalone interactive kiosk, featuring precise dimensional planning for display housing, scanner/dispenser placement, and a stable base platform.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="3d_Design/kioskdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-external-link-alt"></i> View Model (PDF)
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card animate-slide-up delay-3">
-                <div class="project-preview">
-                    <img src="images/elders3d.png" alt="Project 3 Preview">
-                    <div class="project-image-badge">
-                        <i class="fas fa-cube"></i> 3D Design
-                    </div>
-                </div>
-                <div class="project-details">
-                    <div class="project-header">
-                        <h3>Elder Rehabilitation Equipment</h3>
-                        <div class="project-tags">
-                            <span>AutoCAD</span>
-                        </div>
-                    </div>
-                    <p class="project-desc">
-                        A 3D CAD structural design for an elder cognitive and motor-skills rehabilitation station, featuring accessible multi-tier sorting trays, interactive control slots, and an integrated display console.
-                    </p>
-                    <div class="project-actions">
-                        <a download href="3d_Design/eldersdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-external-link-alt"></i> View Model (PDF)
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- All Projects Button -->
-        <div class="all-projects-container animate-slide-up delay-4">
-            <a href="projects.html" class="btn-all-projects">
-                <span>All Projects</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-
-    <section class="skills" id="skills">
-        <div class="skills-container">
-            <div class="content">
-                <div class="title animate-slide-up"><h2><span>My Skills</span></h2></div>
-                <div class="skills-details">
-                    <div class="text animate-slide-right">
-                        <div class="topic">
-                            Skills Reflect Our Knowledge
-                        </div>
-                        <p>My skills represent the expertise I've built through learning and hands-on experience. I focus on mastering key technologies to develop efficient, high-quality solutions.</p>
-                        <div class="experience">
-                            <div class="num">4</div>
-                            <div class="exp">
-                                Years Of <br> Experience
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>ChompTask</h3>
+                                <div class="project-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>Local Storage</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                An underwater-themed productivity web application designed for streamlined task management.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://danzleian.github.io/ChompTask/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="boxes">
-                        <div class="box">
-                            <div class="topic">HTML</div>
-                            <div class="per"></div>
-                        </div>
-                        <div class="box">
-                            <div class="topic">JavaScript</div>
-                        </div>
-                        <div class="box">
-                            <div class="topic">CSS</div>
-                        </div>
-                        <div class="box">
-                            <div class="topic">Flutter</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="services" id="services">
-        <div class="content">
-            <h2 class="title animate-slide-up"><span>My Services</span></h2>
-            <div class="boxes">
-                <div class="box animate-slide-up delay-1">
-                    <div class="icon">
-                        <i class="fas fa-desktop"></i>
+                    <!-- Project 2 -->
+                    <div class="project-card animate-slide-up delay-2">
+                        <div class="project-preview">
+                            <img src="images/kiosk3d.png" alt="Project 2 Preview">
+                            <div class="project-image-badge">
+                                <i class="fas fa-cube"></i> 3D Design
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>EBA KIOSK</h3>
+                                <div class="project-tags">
+                                    <span>AutoCAD</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                A 3D CAD model and ergonomic structural design for a standalone interactive kiosk with stable housing.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="3d_Design/kioskdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-file-pdf"></i> View Model
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="topic">Web Development</div>
-                    <p>I build responsive, user-friendly websites tailored to modern standards. Using HTML, CSS, and JavaScript, I create fast, accessible, and visually appealing web experiences that align with your business goals.</p>
-                </div>
-                <div class="box animate-slide-up delay-2">
-                    <div class="icon">
-                        <i class="fas fa-tablet-alt"></i>
-                    </div>
-                    <div class="topic">App Development</div>
-                    <p>I develop cross-platform mobile applications with Flutter, ensuring seamless performance on both iOS and Android. My focus is on intuitive design, smooth functionality, and scalable solutions.</p>
-                </div>
-                <div class="box animate-slide-up delay-3">
-                    <div class="icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <div class="topic">Graphic Design</div>
-                    <p>I craft visually compelling designs, from logos to marketing materials. By combining creativity with strategic thinking, I deliver designs that communicate your brand's identity effectively.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer id="contact" class="animate-fade">
-        <h2 class="animate-slide-up">Get In Touch</h2>
-        <div class="social-links">
-            <a href="https://www.facebook.com/danzle.ian" class="animate-slide-up delay-1"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/danzleian/" class="animate-slide-up delay-2"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/SHIR0l" class="animate-slide-up delay-3"><i class="fab fa-telegram"></i></a>
-        </div>
-        <p class="animate-slide-up delay-4">&copy; 2025 Danzle Ian B. Vale Cruz. All rights reserved</p>
-    </footer>
+                    <!-- Project 3 -->
+                    <div class="project-card animate-slide-up delay-3">
+                        <div class="project-preview">
+                            <img src="images/elders3d.png" alt="Project 3 Preview">
+                            <div class="project-image-badge">
+                                <i class="fas fa-cube"></i> 3D Design
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <div class="project-header">
+                                <h3>Elder Rehabilitation Equipment</h3>
+                                <div class="project-tags">
+                                    <span>AutoCAD</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">
+                                A 3D CAD structural design for an elder cognitive and motor-skills rehabilitation station.
+                            </p>
+                            <div class="project-actions">
+                                <a download href="3d_Design/eldersdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                    <i class="fas fa-file-pdf"></i> View Model
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="all-projects-container animate-slide-up delay-4">
+                    <a href="projects.html" class="btn-all-projects">
+                        <span>All Projects</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills-section" id="skills">
+                <div class="skills-card">
+                    <div class="section-title animate-slide-up"><h2>My <span>Skills</span></h2></div>
+                    <div class="skills-details">
+                        <div class="skills-bio animate-slide-right">
+                            <h3 class="topic">Skills Reflect Our Knowledge</h3>
+                            <p>My skills represent the expertise I've built through learning and hands-on experience. I focus on mastering key technologies to develop efficient, high-quality solutions.</p>
+                            <div class="experience">
+                                <div class="num">4</div>
+                                <div class="exp">Years Of <br> Experience</div>
+                            </div>
+                        </div>
+                        <div class="boxes">
+                            <div class="box"><div class="topic">HTML</div></div>
+                            <div class="box"><div class="topic">JavaScript</div></div>
+                            <div class="box"><div class="topic">CSS</div></div>
+                            <div class="box"><div class="topic">Flutter</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services-section" id="services">
+                <h2 class="section-title animate-slide-up">My <span>Services</span></h2>
+                <div class="services-grid">
+                    <div class="box animate-slide-up delay-1">
+                        <div class="icon"><i class="fas fa-desktop"></i></div>
+                        <div class="topic">Web Development</div>
+                        <p>I build responsive, user-friendly websites tailored to modern standards using HTML, CSS, and JavaScript.</p>
+                    </div>
+                    <div class="box animate-slide-up delay-2">
+                        <div class="icon"><i class="fas fa-tablet-alt"></i></div>
+                        <div class="topic">App Development</div>
+                        <p>I develop cross-platform mobile applications with Flutter, ensuring seamless performance on both iOS and Android.</p>
+                    </div>
+                    <div class="box animate-slide-up delay-3">
+                        <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                        <div class="topic">Graphic Design</div>
+                        <p>I craft visually compelling designs from logos to layouts, combining creativity with functional structure.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <footer id="contact" class="content-footer animate-fade">
+                <h2 class="animate-slide-up">Get In <span>Touch</span></h2>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/danzle.ian" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/danzleian/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.me/SHIR0l" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p>&copy; 2025 Danzle Ian B. Vale Cruz. All rights reserved.</p>
+            </footer>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>

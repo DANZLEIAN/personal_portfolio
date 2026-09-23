@@ -1,13 +1,18 @@
-// Theme Toggle
-const themeToggle = document.getElementById('themetoggle');
-const rootElement = document.documentElement; // Targets <html>
+// Sync both desktop sidebar and mobile theme toggles
+const themeToggles = [
+    document.getElementById('themetoggle'),
+    document.getElementById('themetoggle-mobile')
+].filter(Boolean);
+
+const rootElement = document.documentElement;
 const body = document.body;
 
 function updateThemeIcon(theme) {
-    if (!themeToggle) return;
-    themeToggle.innerHTML = theme === 'dark' 
-        ? '<i class="fas fa-moon"></i>' 
-        : '<i class="fas fa-sun"></i>';
+    themeToggles.forEach(toggle => {
+        toggle.innerHTML = theme === 'dark' 
+            ? '<i class="fas fa-moon"></i>' 
+            : '<i class="fas fa-sun"></i>';
+    });
 }
 
 function applyTheme(theme) {
@@ -20,13 +25,12 @@ function applyTheme(theme) {
 const savedTheme = localStorage.getItem('theme') || 'dark';
 applyTheme(savedTheme);
 
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
+themeToggles.forEach(btn => {
+    btn.addEventListener('click', () => {
         const currentTheme = rootElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
-}
+});
 
 // ======================
 // Floating Particles Effect
@@ -132,31 +136,54 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ======================
-// Mobile Navigation Menu
+// Sidebar Mobile Toggle & Smooth Scroll
 // ======================
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.links');
+const sidebar = document.getElementById('sidebar');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+if (hamburger && sidebar) {
+    hamburger.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
 
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.links') && !e.target.closest('#hamburger')) {
-        navLinks.classList.remove('active');
-    }
-});
+    document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
+}
 
-document.querySelectorAll('.links a').forEach(link => {
+// Sidebar link click handling
+const navLinks = document.querySelectorAll('.sidebar-link');
+navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        if (link.getAttribute('href').startsWith('#') && !link.hasAttribute('download')) {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
             e.preventDefault();
-            const targetId = link.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            navLinks.classList.remove('active');
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            if (sidebar) sidebar.classList.remove('active');
+        }
+    });
+});
+
+// Active link highlighting on scroll
+const trackedSections = document.querySelectorAll('section, footer');
+window.addEventListener('scroll', () => {
+    let currentId = '';
+    trackedSections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+            currentId = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentId}`) {
+            link.classList.add('active');
         }
     });
 });
@@ -193,7 +220,7 @@ const animateOnScroll = () => {
                     }
                 }
                 
-                if (entry.target.classList.contains('skills')) {
+                if (entry.target.classList.contains('skills') || entry.target.classList.contains('skills-card')) {
                     skillsBoxes.forEach((box, index) => {
                         setTimeout(() => {
                             box.classList.add('show');
@@ -211,7 +238,7 @@ const animateOnScroll = () => {
                     entry.target.classList.add('reset-animation');
                 }
                 
-                if (entry.target.classList.contains('skills')) {
+                if (entry.target.classList.contains('skills') || entry.target.classList.contains('skills-card')) {
                     skillsBoxes.forEach(box => {
                         box.classList.remove('show');
                     });
@@ -226,7 +253,7 @@ const animateOnScroll = () => {
         observer.observe(element);
     });
     
-    const skillsSection = document.querySelector('.skills');
+    const skillsSection = document.querySelector('.skills, .skills-card');
     if (skillsSection) {
         observer.observe(skillsSection);
     }
@@ -234,20 +261,8 @@ const animateOnScroll = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
-    const profileImg = document.querySelector('.profile-image');
-    const introTxt = document.querySelector('.intro-text');
-    if (profileImg) profileImg.classList.add('animate-slide-left');
-    if (introTxt) introTxt.classList.add('animate-slide-right', 'delay-1');
+    const heroImg = document.querySelector('.hero-image-wrapper');
+    const heroTxt = document.querySelector('.hero-text');
+    if (heroImg) heroImg.classList.add('animate-slide-left');
+    if (heroTxt) heroTxt.classList.add('animate-slide-right', 'delay-1');
 });
-
-// Header scroll elevation
-const navbar = document.getElementById('navbar');
-if (navbar) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 30) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-}
