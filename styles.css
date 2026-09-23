@@ -288,7 +288,7 @@ body {
     margin-left: 250px;
     flex: 1;
     max-width: calc(100% - 250px);
-    padding: 3rem 4rem 14rem;
+    padding: 3rem 4rem 2rem;
 }
 
 .mobile-top-bar {
