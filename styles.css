@@ -141,6 +141,44 @@ body {
     padding-top: 1.2rem;
 }
 
+/* Sidebar Email Contact Block */
+.sidebar-contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.4rem;
+}
+
+.contact-subtext {
+    font-size: 0.72rem;
+    color: var(--gray);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.sidebar-email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    transition: var(--transition);
+    word-break: break-all;
+}
+
+.sidebar-email-link i {
+    font-size: 0.85rem;
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.sidebar-email-link:hover {
+    color: var(--primary);
+    transform: translateX(2px);
+}
+
 .sidebar-socials {
     display: flex;
     gap: 0.9rem;
