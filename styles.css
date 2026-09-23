@@ -913,24 +913,27 @@ footer#contact {
         margin: 1rem 0.4rem 0;
     }
 
+    /* Solid opaque mobile dropdown */
     .links {
         position: fixed;
         top: calc(100% + 12px);
         left: 0;
         right: 0;
         width: 100%;
-        background: var(--card-bg); /* Uses pure solid white in light mode, solid navy in dark mode */
+        background-color: var(--card-bg) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
         border: 1px solid var(--nav-border);
         border-radius: 20px;
         flex-direction: column;
         padding: 1.5rem 1rem;
         gap: 0.75rem;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-10px);
         transition: all 0.3s ease;
-        z-index: 1001; /* Keeps it above everything else on the page */
+        z-index: 9999 !important;
     }
     
     .links a {
@@ -938,12 +941,16 @@ footer#contact {
         text-align: center;
         padding: 0.75rem 1rem;
         font-size: 1.05rem;
-        color: var(--text);
+        color: var(--text) !important;
         display: block;
     }
 
+    .links a::after {
+        display: none;
+    }
+
     .links a:hover {
-        background: rgba(78, 84, 200, 0.08);
+        background: rgba(78, 84, 200, 0.1);
     }
     
     .links.active {
