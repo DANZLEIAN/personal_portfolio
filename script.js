@@ -1,5 +1,6 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themetoggle');
+const rootElement = document.documentElement; // Targets <html>
 const body = document.body;
 
 function updateThemeIcon(theme) {
@@ -9,17 +10,21 @@ function updateThemeIcon(theme) {
         : '<i class="fas fa-sun"></i>';
 }
 
+function applyTheme(theme) {
+    rootElement.setAttribute('data-theme', theme);
+    body.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeIcon(theme);
+}
+
 const savedTheme = localStorage.getItem('theme') || 'dark';
-body.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
+applyTheme(savedTheme);
 
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
+        const currentTheme = rootElement.getAttribute('data-theme') || 'dark';
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        applyTheme(newTheme);
     });
 }
 
