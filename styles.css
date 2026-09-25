@@ -620,6 +620,8 @@ body {
     font-size: 2rem;
     color: var(--primary);
     margin-bottom: 1.2rem;
+    text-align: center;
+    width: 100%;
     transition: var(--transition);
 }
 
@@ -628,6 +630,8 @@ body {
     font-weight: 700;
     margin-bottom: 0.6rem;
     color: var(--text);
+    text-align: center;
+    width: 100%;
 }
 
 .services-grid .box p {
