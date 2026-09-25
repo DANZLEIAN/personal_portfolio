@@ -606,30 +606,51 @@ body {
 
 .services-grid .box {
     background: var(--card-bg);
-    padding: 2rem 1.5rem;
-    border-radius: 16px;
+    padding: 2.2rem 2rem;
+    border-radius: 20px;
     box-shadow: var(--shadow);
-    text-align: left;
+    text-align: left; /* Aligns content to the left */
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Keeps the icon aligned left */
+}
+
+.services-grid .icon {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+    transition: var(--transition);
+}
+
+.services-grid .box .topic {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text);
+}
+
+.services-grid .box p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--gray);
+    text-align: left;
+    margin: 0;
 }
 
 .services-grid .box:hover {
     transform: translateY(-4px);
     background: var(--primary);
-    color: white;
 }
 
-.services-grid .icon {
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-    transition: var(--transition);
+.services-grid .box:hover .topic,
+.services-grid .box:hover p {
+    color: #ffffff;
 }
 
 .services-grid .box:hover .icon {
-    color: white;
+    color: #ffffff;
 }
-
 /* ============================================
    Experience & Education Timeline (Centered Minimalist)
    ============================================ */
