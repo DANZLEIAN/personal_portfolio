@@ -888,6 +888,47 @@ body {
 }
 
 /* ============================================
+   Certifications Page & Filter Styling
+   ============================================ */
+.filter-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    background: var(--card-bg);
+    border: 1px solid rgba(78, 84, 200, 0.2);
+    color: var(--text);
+    padding: 0.5rem 1.4rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(78, 84, 200, 0.35);
+}
+
+.cert-icon {
+    font-size: 3.5rem;
+    color: var(--primary);
+    transition: transform 0.35s ease;
+}
+
+.project-card:hover .cert-icon {
+    transform: scale(1.1);
+}
+
+/* ============================================
    Animations
    ============================================ */
 @keyframes fadeIn {

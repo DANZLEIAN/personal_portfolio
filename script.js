@@ -183,3 +183,24 @@ function switchTab(tab, btn) {
         }
     }
 }
+
+// ======================
+// Certification Filter
+// ======================
+function filterCerts(category, btn) {
+    const filterButtons = document.querySelectorAll('.filter-nav .filter-btn');
+    if (filterButtons.length) {
+        filterButtons.forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category') || '';
+        if (category === 'all' || cardCat.includes(category)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
