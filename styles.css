@@ -1020,8 +1020,25 @@ body {
         text-align: center;
     }
 
+    .hero-card .description {
+        text-align: left;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
     .hero-image-wrapper {
         margin: 0 auto;
+    }
+
+    .skills-bio p {
+        text-align: left;
+    }
+
+    .skills-bio .experience {
+        justify-content: center;
+        margin-bottom: 2rem;
     }
 
     .projects-grid, .services-grid {
