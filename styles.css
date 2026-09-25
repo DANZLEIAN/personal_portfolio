@@ -631,6 +631,203 @@ body {
 }
 
 /* ============================================
+   Experience & Education Timeline
+   ============================================ */
+.tab-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.tab-btn {
+    background: var(--card-bg);
+    border: 1px solid rgba(78, 84, 200, 0.2);
+    color: var(--text);
+    padding: 0.6rem 1.6rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: var(--transition);
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(78, 84, 200, 0.35);
+}
+
+.timeline-container {
+    position: relative;
+    padding-left: 2rem;
+    max-width: 900px;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    bottom: 20px;
+    left: 54px;
+    width: 2px;
+    background: rgba(78, 84, 200, 0.25);
+    z-index: 1;
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.timeline-badge {
+    position: relative;
+    z-index: 2;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: var(--card-bg);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-badge {
+    background: var(--primary);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.timeline-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid rgba(78, 84, 200, 0.15);
+    box-shadow: var(--shadow);
+    padding: 2rem 2.2rem;
+    flex: 1;
+    transition: var(--transition);
+}
+
+.timeline-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary);
+}
+
+.timeline-header h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+}
+
+.timeline-meta {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.timeline-meta .badge-status {
+    background: rgba(78, 84, 200, 0.12);
+    color: var(--primary);
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.timeline-role {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.2rem;
+}
+
+.timeline-dates {
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.timeline-body {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 1.4rem;
+}
+
+.timeline-body ul {
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.timeline-body li {
+    margin-bottom: 0.5rem;
+}
+
+.timeline-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.timeline-skills .skill-pill {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.3rem 0.85rem;
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid rgba(78, 84, 200, 0.2);
+    transition: var(--transition);
+}
+
+.timeline-skills .skill-pill:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .timeline-container {
+        padding-left: 0;
+    }
+    .timeline-container::before {
+        left: 24px;
+    }
+    .timeline-badge {
+        width: 44px;
+        height: 44px;
+        font-size: 0.85rem;
+    }
+    .timeline-item {
+        gap: 1.2rem;
+    }
+    .timeline-card {
+        padding: 1.5rem 1.2rem;
+    }
+}
+
+/* ============================================
    Animations
    ============================================ */
 @keyframes fadeIn {

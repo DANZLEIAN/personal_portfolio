@@ -164,3 +164,27 @@ if (copyEmailBtn) {
         });
     });
 }
+
+// ======================
+// Experience / Education Tab Switcher
+// ======================
+function switchTab(tab, btn) {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    if (tabButtons.length) {
+        tabButtons.forEach(b => b.classList.remove('active'));
+    }
+    if (btn) btn.classList.add('active');
+
+    const edu = document.getElementById('education-content');
+    const work = document.getElementById('work-content');
+
+    if (edu && work) {
+        if (tab === 'education') {
+            edu.style.display = 'block';
+            work.style.display = 'none';
+        } else {
+            edu.style.display = 'none';
+            work.style.display = 'block';
+        }
+    }
+}
