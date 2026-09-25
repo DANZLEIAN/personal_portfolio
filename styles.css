@@ -631,21 +631,36 @@ body {
 }
 
 /* ============================================
-   Experience & Education Timeline
+   Experience & Education Timeline (Centered Minimalist)
    ============================================ */
+
+/* Center container in the viewport */
+.experience-page-container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding-top: 1rem;
+}
+
+.experience-intro {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+}
+
 .tab-nav {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 3rem;
+    gap: 0.8rem;
+    margin-bottom: 3.5rem;
 }
 
 .tab-btn {
     background: var(--card-bg);
     border: 1px solid rgba(78, 84, 200, 0.2);
     color: var(--text);
-    padding: 0.6rem 1.6rem;
+    padding: 0.5rem 1.4rem;
     border-radius: 30px;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
@@ -662,144 +677,149 @@ body {
     box-shadow: 0 4px 14px rgba(78, 84, 200, 0.35);
 }
 
+/* Timeline Layout */
 .timeline-container {
     position: relative;
-    padding-left: 2rem;
-    max-width: 900px;
+    width: 100%;
 }
 
+/* Vertical Spine connecting the badges */
 .timeline-container::before {
     content: '';
     position: absolute;
     top: 25px;
-    bottom: 20px;
-    left: 54px;
-    width: 2px;
-    background: rgba(78, 84, 200, 0.25);
+    bottom: 25px;
+    left: 23px; /* Centers with the 46px badge */
+    width: 1px;
+    background: rgba(255, 255, 255, 0.12);
     z-index: 1;
+}
+
+[data-theme="light"] .timeline-container::before {
+    background: rgba(0, 0, 0, 0.12);
 }
 
 .timeline-item {
     position: relative;
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 2.2rem;
     margin-bottom: 3.5rem;
 }
 
+/* Rounded square badge matching the reference photo */
 .timeline-badge {
     position: relative;
     z-index: 2;
-    width: 52px;
-    height: 52px;
+    width: 46px;
+    height: 46px;
     flex-shrink: 0;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    border-radius: 12px;
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    box-shadow: var(--shadow);
+    letter-spacing: 0.5px;
     transition: var(--transition);
+}
+
+[data-theme="light"] .timeline-badge {
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .timeline-item:hover .timeline-badge {
-    background: var(--primary);
-    color: #ffffff;
-    transform: scale(1.05);
-}
-
-.timeline-card {
-    background: var(--card-bg);
-    border-radius: 20px;
-    border: 1px solid rgba(78, 84, 200, 0.15);
-    box-shadow: var(--shadow);
-    padding: 2rem 2.2rem;
-    flex: 1;
-    transition: var(--transition);
-}
-
-.timeline-card:hover {
-    transform: translateY(-3px);
     border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Clean, borderless content wrapper matching reference */
+.timeline-card {
+    flex: 1;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    border: none;
 }
 
 .timeline-header h3 {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.25rem;
 }
 
 .timeline-meta {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--gray);
     margin-bottom: 0.8rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
 }
 
 .timeline-meta .badge-status {
-    background: rgba(78, 84, 200, 0.12);
     color: var(--primary);
-    padding: 0.15rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
     font-weight: 600;
 }
 
 .timeline-role {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.2rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
 }
 
 .timeline-dates {
-    font-size: 0.78rem;
-    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
     color: var(--gray);
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
     font-weight: 600;
 }
 
 .timeline-body {
-    font-size: 0.92rem;
-    line-height: 1.7;
+    font-size: 0.88rem;
+    line-height: 1.65;
     color: var(--text);
-    margin-bottom: 1.4rem;
+    opacity: 0.88;
+    margin-bottom: 1.2rem;
 }
 
 .timeline-body ul {
-    padding-left: 1.2rem;
-    margin-top: 0.5rem;
+    padding-left: 1.1rem;
 }
 
 .timeline-body li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
+/* Pill tags like reference */
 .timeline-skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.45rem;
 }
 
 .timeline-skills .skill-pill {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    padding: 0.3rem 0.85rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid rgba(78, 84, 200, 0.2);
+    background: transparent;
+    color: var(--gray);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     transition: var(--transition);
+}
+
+[data-theme="light"] .timeline-skills .skill-pill {
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 .timeline-skills .skill-pill:hover {
@@ -824,6 +844,21 @@ body {
     }
     .timeline-card {
         padding: 1.5rem 1.2rem;
+    }
+    .experience-page-container {
+        padding: 0;
+    }
+    .timeline-container::before {
+        left: 19px;
+    }
+    .timeline-badge {
+        width: 38px;
+        height: 38px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+    }
+    .timeline-item {
+        gap: 1.2rem;
     }
 }
 
