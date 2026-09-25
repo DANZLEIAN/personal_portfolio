@@ -116,11 +116,6 @@ const animateOnScroll = () => {
                     entry.target.classList.add('reset-animation');
                 }
                 
-                if (entry.target.classList.contains('skills') || entry.target.classList.contains('skills-card')) {
-                    skillsBoxes.forEach(box => {
-                        box.classList.remove('show');
-                    });
-                }
             }
         });
     }, {
