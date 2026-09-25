@@ -102,7 +102,7 @@ const animateOnScroll = () => {
                     skillsBoxes.forEach((box, index) => {
                         setTimeout(() => {
                             box.classList.add('show');
-                        }, index * 200);
+                        }, (index + 1) * 350);
                     });
                 }
             } else {
@@ -119,7 +119,7 @@ const animateOnScroll = () => {
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.35
     });
 
     animatedElements.forEach(element => {
