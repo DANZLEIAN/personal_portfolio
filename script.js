@@ -142,18 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Copy Email for Contact CTA Section
 const contactSectionCopyBtn = document.getElementById('contact-section-copy-btn');
-const contactSectionCopyBadge = document.getElementById('contact-section-copy-badge');
+const contactCopyIcon = document.getElementById('contact-copy-icon');
+const contactCopyText = document.getElementById('contact-copy-text');
 
 if (contactSectionCopyBtn) {
     contactSectionCopyBtn.addEventListener('click', () => {
         const email = contactSectionCopyBtn.getAttribute('data-email');
         navigator.clipboard.writeText(email).then(() => {
-            if (contactSectionCopyBadge) {
-                contactSectionCopyBadge.classList.add('visible');
-                setTimeout(() => {
-                    contactSectionCopyBadge.classList.remove('visible');
-                }, 2000);
-            }
+            // Change button state to Copied!
+            contactCopyIcon.className = 'fas fa-check';
+            contactCopyText.textContent = 'Copied!';
+            contactSectionCopyBtn.classList.add('copied-active');
+
+            // Reset back after 2 seconds
+            setTimeout(() => {
+                contactCopyIcon.className = 'far fa-copy';
+                contactCopyText.textContent = 'Copy Address';
+                contactSectionCopyBtn.classList.remove('copied-active');
+            }, 2000);
         }).catch(err => {
             console.error('Failed to copy email:', err);
         });

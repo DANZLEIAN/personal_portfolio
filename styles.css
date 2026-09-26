@@ -1739,6 +1739,15 @@ body {
     transform: translateY(-3px);
 }
 
+.contact-copy-btn.copied-active {
+    border-color: #10b981 !important;
+    color: #10b981 !important;
+}
+
+.contact-copy-btn.copied-active i {
+    color: #10b981 !important;
+}
+
 @media (max-width: 600px) {
     .contact-cta-card {
         padding: 2.5rem 1.5rem;
