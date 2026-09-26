@@ -280,9 +280,8 @@ const projectDetailsData = {
         downloadAttr: true,
         content: `
             <div class="proj-modal-video-container">
-                <!-- Replace src with your gameplay video file path or embed link -->
-                <video controls poster="images/escape.png">
-                    <source src="videos/project2.mp4" type="video/mp4">
+                <video id="escapeVideoPlayer" controls autoplay muted playsinline poster="images/escape.png">
+                    <source src="videos/escape-demo.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -347,6 +346,17 @@ function openProjectModal(projectId) {
     }
 
     projModalBody.innerHTML = data.content;
+
+    const video = projModalBody.querySelector('video');
+    if (video) {
+        video.currentTime = 0;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(err => {
+                console.log('Autoplay was prevented by browser policy:', err);
+            });
+        }
+    }
 
     projectModalOverlay.classList.add('active');
     projectModalOverlay.setAttribute('aria-hidden', 'false');
