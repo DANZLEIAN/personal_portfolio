@@ -374,22 +374,34 @@ const projectDetailsData = {
         `
     },
     'elders': {
-        title: 'Elder Rehabilitation Unit — 3D Model',
-        icon: 'fas fa-cube',
+        title: 'Elder Rehabilitation Unit — Enclosure Design',
+        icon: 'fas fa-drafting-compass',
         primaryBtnText: 'Download CAD PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
         primaryBtnHref: '3d_Design/eldersdesign.pdf',
         downloadAttr: true,
-        content: `<iframe src="3d_Design/eldersdesign.pdf" class="proj-modal-pdf-frame" title="Elder Rehabilitation Unit CAD Model"></iframe>`
+        content: `
+            <div class="proj-modal-info" style="padding-bottom: 1rem;">
+                <h4>Role: Structural CAD & Enclosure Designer</h4>
+                <p>Designed the ergonomic physical console, structural layout, and user-facing physical interface for a collaborative undergraduate thesis rehabilitation station.</p>
+            </div>
+            <iframe src="3d_Design/eldersdesign.pdf" class="proj-modal-pdf-frame" title="Elder Rehabilitation Unit CAD Model"></iframe>
+        `
     },
     'liblocker': {
-        title: 'Smart Library Locker — 3D Model',
-        icon: 'fas fa-cube',
+        title: 'Smart Library Locker — Enclosure Design',
+        icon: 'fas fa-drafting-compass',
         primaryBtnText: 'Download CAD PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
         primaryBtnHref: '3d_Design/liblocker.pdf',
         downloadAttr: true,
-        content: `<iframe src="3d_Design/liblocker.pdf" class="proj-modal-pdf-frame" title="Smart Library Locker CAD Model"></iframe>`
+        content: `
+            <div class="proj-modal-info" style="padding-bottom: 1rem;">
+                <h4>Role: Hardware Housing & Layout Designer</h4>
+                <p>Engineered the modular multi-door sheet metal chassis for an automated library locker prototype, including internal spatial planning for solenoid locks and sensor circuitry.</p>
+            </div>
+            <iframe src="3d_Design/liblocker.pdf" class="proj-modal-pdf-frame" title="Smart Library Locker CAD Model"></iframe>
+        `
     },
     'lockify': {
         title: 'LOCKIFY — IoT Project Documentation',
