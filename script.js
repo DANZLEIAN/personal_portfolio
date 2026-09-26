@@ -204,3 +204,57 @@ function filterCerts(category, btn) {
         }
     });
 }
+
+// ======================
+// Document Preview Modal (Resume & CV)
+// ======================
+const docModalOverlay = document.getElementById('docModalOverlay');
+const docModalTitle = document.getElementById('docModalTitle');
+const docModalFrame = document.getElementById('docModalFrame');
+const docModalDownloadBtn = document.getElementById('docModalDownloadBtn');
+const docModalExternalBtn = document.getElementById('docModalExternalBtn');
+
+function openDocModal(docPath, docTitle) {
+    if (!docModalOverlay || !docModalFrame) return;
+
+    docModalTitle.textContent = docTitle;
+    docModalFrame.src = docPath;
+    
+    // Set up download and new tab URLs
+    if (docModalDownloadBtn) {
+        docModalDownloadBtn.href = docPath;
+        docModalDownloadBtn.setAttribute('download', docTitle.toLowerCase().replace(/\s+/g, '_') + '.pdf');
+    }
+    if (docModalExternalBtn) {
+        docModalExternalBtn.href = docPath;
+    }
+
+    docModalOverlay.classList.add('active');
+    docModalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Stop background page scrolling
+}
+
+function closeDocModal() {
+    if (!docModalOverlay || !docModalFrame) return;
+
+    docModalOverlay.classList.remove('active');
+    docModalOverlay.setAttribute('aria-hidden', 'true');
+    docModalFrame.src = ''; // Clear iframe to stop background PDF processes
+    document.body.style.overflow = '';
+}
+
+// Close when clicking anywhere on the dim background overlay
+if (docModalOverlay) {
+    docModalOverlay.addEventListener('click', (e) => {
+        if (e.target === docModalOverlay) {
+            closeDocModal();
+        }
+    });
+}
+
+// Close on Escape key press
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && docModalOverlay && docModalOverlay.classList.contains('active')) {
+        closeDocModal();
+    }
+});

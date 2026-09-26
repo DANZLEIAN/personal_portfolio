@@ -102,8 +102,12 @@
                         </p>
                         
                         <div class="hero-actions">
-                            <a download href="My_Credentials/myresume.pdf" class="hire-me">My Resume</a>
-                            <a download href="My_Credentials/MyCV.pdf" class="hire-me">My CV</a>
+                            <button type="button" class="hire-me" onclick="openDocModal('My_Credentials/myresume.pdf', 'My Resume')">
+                                <i class="far fa-file-pdf"></i> View Resume
+                            </button>
+                            <button type="button" class="hire-me" onclick="openDocModal('My_Credentials/MyCV.pdf', 'My Curriculum Vitae')">
+                                <i class="far fa-file-alt"></i> View CV
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -273,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </section>
 
@@ -373,6 +377,37 @@
         </main>
     </div>
 
+    <!-- Document Preview Modal (Resume / CV) -->
+    <div class="doc-modal-overlay" id="docModalOverlay" aria-hidden="true">
+        <div class="doc-modal-window" role="dialog" aria-modal="true" aria-labelledby="docModalTitle">
+            <!-- Modal Top Header Bar -->
+            <div class="doc-modal-header">
+                <div class="doc-modal-title-group">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3 id="docModalTitle">Document Preview</h3>
+                </div>
+                <div class="doc-modal-actions">
+                    <a id="docModalDownloadBtn" href="#" download class="doc-btn doc-btn-download" title="Download Document">
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </a>
+                    <a id="docModalExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="doc-btn doc-btn-external" title="Open in New Tab">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <button type="button" class="doc-btn doc-btn-close" onclick="closeDocModal()" title="Close (Esc)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Document Viewer Frame -->
+            <div class="doc-modal-body">
+                <iframe id="docModalFrame" src="" title="Document Preview Frame"></iframe>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+
 </body>
 </html>
