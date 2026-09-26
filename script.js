@@ -258,3 +258,117 @@ document.addEventListener('keydown', (e) => {
         closeDocModal();
     }
 });
+
+// ======================
+// Project Details Modal System
+// ======================
+const projectModalOverlay = document.getElementById('projectModalOverlay');
+const projModalTitle = document.getElementById('projModalTitle');
+const projModalIcon = document.getElementById('projModalIcon');
+const projModalPrimaryBtn = document.getElementById('projModalPrimaryBtn');
+const projModalPrimaryIcon = document.getElementById('projModalPrimaryIcon');
+const projModalPrimaryText = document.getElementById('projModalPrimaryText');
+const projModalBody = document.getElementById('projModalBody');
+
+const projectDetailsData = {
+    'escape': {
+        title: 'ESCAPE — Mobile Game',
+        icon: 'fas fa-gamepad',
+        primaryBtnText: 'Download APK',
+        primaryBtnIcon: 'fas fa-download',
+        primaryBtnHref: 'APKs/app-release.apk',
+        downloadAttr: true,
+        content: `
+            <div class="proj-modal-video-container">
+                <!-- Replace src with your gameplay video file path or embed link -->
+                <video controls poster="images/escape.png">
+                    <source src="videos/project2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="proj-modal-info">
+                <h4>About ESCAPE</h4>
+                <p>A snakes-and-ladders-inspired mobile board game built with Flutter featuring dynamic warp portals, customized movement tiles, and interactive board mechanics. Download the APK above to test it on your Android device.</p>
+            </div>
+        `
+    },
+    'ebakiosk': {
+        title: 'EBA KIOSK — 3D CAD Model',
+        icon: 'fas fa-cube',
+        primaryBtnText: 'Download CAD PDF',
+        primaryBtnIcon: 'fas fa-file-pdf',
+        primaryBtnHref: '3d_Design/kioskdesign.pdf',
+        downloadAttr: true,
+        content: `<iframe src="3d_Design/kioskdesign.pdf" class="proj-modal-pdf-frame" title="EBA Kiosk CAD Model"></iframe>`
+    },
+    'elders': {
+        title: 'Elder Rehabilitation Unit — 3D Model',
+        icon: 'fas fa-cube',
+        primaryBtnText: 'Download CAD PDF',
+        primaryBtnIcon: 'fas fa-file-pdf',
+        primaryBtnHref: '3d_Design/eldersdesign.pdf',
+        downloadAttr: true,
+        content: `<iframe src="3d_Design/eldersdesign.pdf" class="proj-modal-pdf-frame" title="Elder Rehabilitation Unit CAD Model"></iframe>`
+    },
+    'liblocker': {
+        title: 'Smart Library Locker — 3D Model',
+        icon: 'fas fa-cube',
+        primaryBtnText: 'Download CAD PDF',
+        primaryBtnIcon: 'fas fa-file-pdf',
+        primaryBtnHref: '3d_Design/liblocker.pdf',
+        downloadAttr: true,
+        content: `<iframe src="3d_Design/liblocker.pdf" class="proj-modal-pdf-frame" title="Smart Library Locker CAD Model"></iframe>`
+    },
+    'lockify': {
+        title: 'LOCKIFY — IoT Project Documentation',
+        icon: 'fas fa-microchip',
+        primaryBtnText: 'Download Document',
+        primaryBtnIcon: 'fas fa-file-pdf',
+        primaryBtnHref: 'Projects/lockify.pdf',
+        downloadAttr: true,
+        content: `<iframe src="Projects/lockify.pdf" class="proj-modal-pdf-frame" title="Lockify Project Documentation"></iframe>`
+    }
+};
+
+function openProjectModal(projectId) {
+    const data = projectDetailsData[projectId];
+    if (!data || !projectModalOverlay) return;
+
+    projModalTitle.textContent = data.title;
+    projModalIcon.className = data.icon;
+    projModalPrimaryText.textContent = data.primaryBtnText;
+    projModalPrimaryIcon.className = data.primaryBtnIcon;
+    projModalPrimaryBtn.href = data.primaryBtnHref;
+    
+    if (data.downloadAttr) {
+        projModalPrimaryBtn.setAttribute('download', '');
+    } else {
+        projModalPrimaryBtn.removeAttribute('download');
+    }
+
+    projModalBody.innerHTML = data.content;
+
+    projectModalOverlay.classList.add('active');
+    projectModalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+    if (!projectModalOverlay) return;
+    projectModalOverlay.classList.remove('active');
+    projectModalOverlay.setAttribute('aria-hidden', 'true');
+    projModalBody.innerHTML = ''; // Clear content to stop media/iframe loading
+    document.body.style.overflow = '';
+}
+
+if (projectModalOverlay) {
+    projectModalOverlay.addEventListener('click', (e) => {
+        if (e.target === projectModalOverlay) closeProjectModal();
+    });
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && projectModalOverlay && projectModalOverlay.classList.contains('active')) {
+        closeProjectModal();
+    }
+});
