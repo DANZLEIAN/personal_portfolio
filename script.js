@@ -374,31 +374,31 @@ const projectDetailsData = {
         `
     },
     'elders': {
-        title: 'Elder Rehabilitation Unit — Enclosure Design',
-        icon: 'fas fa-drafting-compass',
+        title: 'Elder Rehabilitation Unit — 3D CAD Model',
+        icon: 'fas fa-cube',
         primaryBtnText: 'Download CAD PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
         primaryBtnHref: '3d_Design/eldersdesign.pdf',
         downloadAttr: true,
         content: `
             <div class="proj-modal-info" style="padding-bottom: 1rem;">
-                <h4>Role: Structural CAD & Enclosure Designer</h4>
-                <p>Designed the ergonomic physical console, structural layout, and user-facing physical interface for a collaborative undergraduate thesis rehabilitation station.</p>
+                <h4>Role: 3D CAD Modeler & Drafter</h4>
+                <p>Constructed a detailed 3D digital model in AutoCAD based on a completed physical hardware prototype, providing accurate dimensional drafting, component layouts, and orthographic documentation.</p>
             </div>
             <iframe src="3d_Design/eldersdesign.pdf" class="proj-modal-pdf-frame" title="Elder Rehabilitation Unit CAD Model"></iframe>
         `
     },
     'liblocker': {
-        title: 'Smart Library Locker — Enclosure Design',
-        icon: 'fas fa-drafting-compass',
+        title: 'Smart Library Locker — 3D CAD Model',
+        icon: 'fas fa-cube',
         primaryBtnText: 'Download CAD PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
         primaryBtnHref: '3d_Design/liblocker.pdf',
         downloadAttr: true,
         content: `
             <div class="proj-modal-info" style="padding-bottom: 1rem;">
-                <h4>Role: Hardware Housing & Layout Designer</h4>
-                <p>Engineered the modular multi-door sheet metal chassis for an automated library locker prototype, including internal spatial planning for solenoid locks and sensor circuitry.</p>
+                <h4>Role: 3D CAD Modeler & Drafter</h4>
+                <p>Modeled a finished physical locker system prototype into AutoCAD 3D, creating complete digital schematics, compartment views, and visual documentation of the existing hardware setup.</p>
             </div>
             <iframe src="3d_Design/liblocker.pdf" class="proj-modal-pdf-frame" title="Smart Library Locker CAD Model"></iframe>
         `
