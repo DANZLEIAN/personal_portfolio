@@ -281,7 +281,7 @@ const projectDetailsData = {
         content: `
             <div class="proj-modal-video-container">
                 <video id="escapeVideoPlayer" controls autoplay muted playsinline poster="images/escape.png">
-                    <source src="videos/escape-demo.mp4" type="video/mp4">
+                    <source src="videos/project2.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
