@@ -317,6 +317,33 @@
         </main>
     </div>
 
+    <!-- Unified Project Details Modal -->
+<div class="project-modal-overlay" id="projectModalOverlay" aria-hidden="true">
+    <div class="project-modal-window" role="dialog" aria-modal="true" aria-labelledby="projModalTitle">
+        <!-- Header -->
+        <div class="project-modal-header">
+            <div class="project-modal-title-group">
+                <i id="projModalIcon" class="fas fa-cube"></i>
+                <h3 id="projModalTitle">Project Title</h3>
+            </div>
+            <div class="project-modal-actions">
+                <a id="projModalPrimaryBtn" href="#" target="_blank" rel="noopener noreferrer" class="doc-btn doc-btn-download">
+                    <i id="projModalPrimaryIcon" class="fas fa-download"></i>
+                    <span id="projModalPrimaryText">Download</span>
+                </a>
+                <button type="button" class="doc-btn doc-btn-close" onclick="closeProjectModal()" title="Close (Esc)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Body Content (Swapped dynamically based on project) -->
+        <div class="project-modal-body" id="projModalBody">
+            <!-- Dynamic content injected via JS -->
+        </div>
+    </div>
+</div>
+
     <!-- Script imports -->
     <script src="script.js"></script>
     <script>
