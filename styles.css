@@ -650,6 +650,9 @@ body {
     color: #fff;
     box-shadow: 0 4px 12px rgba(78, 84, 200, 0.3);
     transition: var(--transition);
+    border: none;        
+    outline: none;       
+    font-family: inherit;
 }
 
 .btn-project:hover {
