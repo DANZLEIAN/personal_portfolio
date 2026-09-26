@@ -140,18 +140,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroTxt) heroTxt.classList.add('animate-slide-right', 'delay-1');
 });
 
-// Copy Email to Clipboard
-const copyEmailBtn = document.getElementById('copy-email-btn');
-const copyBadge = document.getElementById('copy-badge');
+// Copy Email for Contact CTA Section
+const contactSectionCopyBtn = document.getElementById('contact-section-copy-btn');
+const contactSectionCopyBadge = document.getElementById('contact-section-copy-badge');
 
-if (copyEmailBtn) {
-    copyEmailBtn.addEventListener('click', () => {
-        const email = copyEmailBtn.getAttribute('data-email');
+if (contactSectionCopyBtn) {
+    contactSectionCopyBtn.addEventListener('click', () => {
+        const email = contactSectionCopyBtn.getAttribute('data-email');
         navigator.clipboard.writeText(email).then(() => {
-            if (copyBadge) {
-                copyBadge.classList.add('visible');
+            if (contactSectionCopyBadge) {
+                contactSectionCopyBadge.classList.add('visible');
                 setTimeout(() => {
-                    copyBadge.classList.remove('visible');
+                    contactSectionCopyBadge.classList.remove('visible');
                 }, 2000);
             }
         }).catch(err => {

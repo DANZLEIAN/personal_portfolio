@@ -1637,6 +1637,141 @@ body {
     }
 }
 
+/* ============================================
+   Homepage Contact / CTA Section
+   ============================================ */
+.contact-cta-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 3.5rem 2.5rem;
+    border: 1px solid rgba(78, 84, 200, 0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.contact-cta-content {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.contact-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--primary);
+    background: rgba(78, 84, 200, 0.12);
+    border: 1px solid rgba(78, 84, 200, 0.22);
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.contact-cta-content h2 {
+    font-size: 2.2rem;
+    color: var(--text);
+    margin: 0;
+}
+
+.contact-cta-content h2 span {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-cta-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin: 0;
+}
+
+.contact-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+}
+
+.contact-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.contact-copy-btn {
+    position: relative;
+    cursor: pointer;
+    font-family: inherit;
+    background: transparent;
+    border-radius: 40px;
+    padding: 0.65rem 1.6rem;
+}
+
+.contact-copy-btn:hover {
+    border-color: var(--primary);
+    color: #ffffff;
+}
+
+.contact-direct-socials {
+    display: flex;
+    gap: 1.4rem;
+    margin-top: 1rem;
+}
+
+.contact-direct-socials a {
+    color: var(--gray);
+    font-size: 1.35rem;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.contact-direct-socials a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+    .contact-cta-card {
+        padding: 2.5rem 1.5rem;
+    }
+    .contact-cta-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
 
 /* ============================================
    Animations
