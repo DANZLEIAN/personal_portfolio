@@ -292,13 +292,86 @@ const projectDetailsData = {
         `
     },
     'ebakiosk': {
-        title: 'EBA KIOSK — 3D CAD Model',
-        icon: 'fas fa-cube',
+        title: 'EBA KIOSK — IoT & Full-Stack Ordering System',
+        icon: 'fas fa-microchip',
         primaryBtnText: 'Download CAD PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
         primaryBtnHref: '3d_Design/kioskdesign.pdf',
         downloadAttr: true,
-        content: `<iframe src="3d_Design/kioskdesign.pdf" class="proj-modal-pdf-frame" title="EBA Kiosk CAD Model"></iframe>`
+        content: `
+            <div class="kiosk-modal-container">
+                <!-- Video Navigation Tabs -->
+                <div class="kiosk-video-tabs">
+                    <button type="button" class="kiosk-tab-btn active" onclick="switchKioskVideo('videos/KioskShowcase.mp4', this)">
+                        <i class="fas fa-desktop"></i> Touchscreen Kiosk
+                    </button>
+                    <button type="button" class="kiosk-tab-btn" onclick="switchKioskVideo('videos/AdminDashboard.mp4', this)">
+                        <i class="fas fa-chart-line"></i> Admin Dashboard
+                    </button>
+                    <button type="button" class="kiosk-tab-btn" onclick="switchKioskVideo('videos/WebAppShowcase.mp4', this)">
+                        <i class="fas fa-mobile-alt"></i> Web App Portal
+                    </button>
+                </div>
+
+                <!-- Video Showcase Player -->
+                <div class="proj-modal-video-container">
+                    <video id="kioskVideoPlayer" controls autoplay muted playsinline poster="images/kiosk3d.png">
+                        <source src="videos/KioskShowcase.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <!-- Technical Case Study & Specs -->
+                <div class="proj-modal-info">
+                    <h4>System Architecture & Overview</h4>
+                    <p>
+                        A self-service purchasing ecosystem designed to eliminate school ordering bottlenecks. Integrates physical touch hardware, thermal transaction printing, live database synchronization, and automated cellular notifications.
+                    </p>
+
+                    <!-- Technical Metrics Grid -->
+                    <div class="kiosk-metrics-grid">
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">93.8%</span>
+                            <span class="metric-lbl">Efficiency Improvement</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">7.6s</span>
+                            <span class="metric-lbl">Avg. SMS Alert Speed</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">4.71 / 5</span>
+                            <span class="metric-lbl">ISO/IEC 25010 Score</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">4.77 / 5</span>
+                            <span class="metric-lbl">TAM Acceptance</span>
+                        </div>
+                    </div>
+
+                    <!-- Architecture Bullets -->
+                    <div class="kiosk-spec-block">
+                        <h5>Engineering Implementation</h5>
+                        <ul>
+                            <li><strong>Full-Stack Architecture:</strong> Engineered with Next.js, TypeScript, PostgreSQL, and Prisma ORM, using Zustand for persistent client session state.</li>
+                            <li><strong>Hardware Interfacing:</strong> Communicates via QZ Tray WebSocket using RSA-SHA512 signatures and raw ESC/POS commands to drive a Goojprt thermal printer.</li>
+                            <li><strong>IoT Cellular Gateway:</strong> Connected Firebase RTDB to an ESP32 microcontroller and SIM800L GSM module for direct cellular SMS delivery.</li>
+                            <li><strong>Ergonomic Enclosure:</strong> Modeled in AutoCAD to create an ergonomic, stable sheet-metal housing with secure internal component bays.</li>
+                        </ul>
+                    </div>
+
+                    <!-- CAD Blueprint Action -->
+                    <div class="kiosk-cad-footer">
+                        <div>
+                            <h5>Physical Blueprint & 3D Drafting</h5>
+                            <p>Detailed dimensional drafting, internal layout schematics, and component placements.</p>
+                        </div>
+                        <a href="3d_Design/kioskdesign.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                            <i class="fas fa-file-pdf"></i> View CAD Blueprints
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `
     },
     'elders': {
         title: 'Elder Rehabilitation Unit — 3D Model',
@@ -382,3 +455,23 @@ document.addEventListener('keydown', (e) => {
         closeProjectModal();
     }
 });
+
+// Function to switch videos in the EBA Kiosk modal tab bar
+function switchKioskVideo(videoSrc, btn) {
+    const video = document.getElementById('kioskVideoPlayer');
+    if (!video) return;
+
+    // Update active tab button style
+    document.querySelectorAll('.kiosk-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    // Switch video source and autoplay
+    video.src = videoSrc;
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(err => {
+            console.log('Video autoplay prevented:', err);
+        });
+    }
+}

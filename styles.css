@@ -813,6 +813,170 @@ body {
 }
 
 /* ============================================
+   EBA Kiosk Modal & Tab Styling
+   ============================================ */
+.kiosk-modal-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.kiosk-video-tabs {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.9rem 1.6rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid var(--sidebar-border);
+    overflow-x: auto;
+}
+
+.kiosk-tab-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--sidebar-border);
+    color: var(--text);
+    padding: 0.45rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    white-space: nowrap;
+    font-family: inherit;
+    outline: none;
+}
+
+[data-theme="light"] .kiosk-tab-btn {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.kiosk-tab-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.kiosk-tab-btn.active {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 10px rgba(78, 84, 200, 0.35);
+}
+
+/* Kiosk Metrics Grid */
+.kiosk-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 0.8rem 0;
+}
+
+.kiosk-metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(78, 84, 200, 0.16);
+    border-radius: 14px;
+    padding: 1rem 0.8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+[data-theme="light"] .kiosk-metric-card {
+    background: #ffffff;
+    border-color: rgba(78, 84, 200, 0.12);
+}
+
+.kiosk-metric-card .metric-num {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.kiosk-metric-card .metric-lbl {
+    font-size: 0.68rem;
+    color: var(--gray);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Specs & Architecture List */
+.kiosk-spec-block {
+    margin: 0.6rem 0;
+}
+
+.kiosk-spec-block h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+}
+
+.kiosk-spec-block ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.kiosk-spec-block li {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.9;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.kiosk-spec-block li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* CAD Blueprint Download Section */
+.kiosk-cad-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    padding: 1.2rem 1.4rem;
+    background: rgba(78, 84, 200, 0.08);
+    border: 1px solid rgba(78, 84, 200, 0.2);
+    border-radius: 16px;
+}
+
+.kiosk-cad-footer h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 0.2rem;
+}
+
+.kiosk-cad-footer p {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .kiosk-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .kiosk-cad-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ============================================
    Skills & Services
    ============================================ */
 .skills-card {
