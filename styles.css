@@ -655,6 +655,80 @@ body {
 .services-grid .box:hover .icon {
     color: #ffffff;
 }
+
+/* ============================================
+   Categorized Skills Grid
+   ============================================ */
+.skills-categorized-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.skill-category-box {
+    background: var(--bg);
+    border: 1px solid rgba(78, 84, 200, 0.15);
+    border-radius: 18px;
+    padding: 1.8rem 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.skill-category-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.category-header i {
+    font-size: 1.4rem;
+    color: var(--primary);
+}
+
+.category-header h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.skill-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag-list span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(78, 84, 200, 0.12);
+    color: var(--text);
+    border: 1px solid rgba(78, 84, 200, 0.18);
+    transition: var(--transition);
+}
+
+.skill-tag-list span:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+
+@media (max-width: 900px) {
+    .skills-categorized-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ============================================
    Experience & Education Timeline (Centered Minimalist)
    ============================================ */
@@ -1201,3 +1275,4 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
