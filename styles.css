@@ -1755,8 +1755,9 @@ body {
     .contact-cta-content h2 {
         font-size: 1.8rem;
     }
-    .contact-status-badge p {
+    .contact-cta-content p {
         text-align: left;
+        width: 100%;
     }
 }
 
