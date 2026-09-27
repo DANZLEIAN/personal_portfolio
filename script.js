@@ -379,6 +379,75 @@ const projectDetailsData = {
             </div>
         `
     },
+    'sentry': {
+        title: 'Vision QC Inspection Station — James Polymers',
+        icon: 'fas fa-microchip',
+        primaryBtnText: 'Download Schematic PDF',
+        primaryBtnIcon: 'fas fa-file-pdf',
+        primaryBtnHref: '3d_Design/Schematic.pdf',
+        downloadAttr: true,
+        content: `
+            <div class="kiosk-modal-container">
+                <!-- Video Showcase Player -->
+                <div class="proj-modal-video-container">
+                    <video id="sentryVideoPlayer" controls autoplay muted playsinline poster="images/sentry.png">
+                        <source src="videos/sentry.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <!-- Technical Specs & Engineering Documentation -->
+                <div class="proj-modal-info">
+                    <h4>Automated Defect Detection & Optical Sensing</h4>
+                    <p>
+                        Engineered during an industry internship at James Polymers Manufacturing Corporation[cite: 5]. This station automates visual defect inspection using real-time machine vision tracking to minimize manual QA overhead and logging latency[cite: 5].
+                    </p>
+
+                    <!-- Technical Metrics Grid -->
+                    <div class="kiosk-metrics-grid">
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Sentry 2</span>
+                            <span class="metric-lbl">AI Vision Sensor</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">UART / I2C</span>
+                            <span class="metric-lbl">Protocol Bus</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Real-Time</span>
+                            <span class="metric-lbl">Defect Rejection</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">QA SOP</span>
+                            <span class="metric-lbl">Full Documentation</span>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Highlights -->
+                    <div class="kiosk-spec-block">
+                        <h5>Engineering Implementation</h5>
+                        <ul>
+                            <li><strong>Optical Recognition:</strong> Integrated the Sentry 2 AI machine-vision module trained for object identification and surface anomaly rejection.</li>
+                            <li><strong>Microcontroller Automation:</strong> Programmed Arduino logic to process serial telemetry, trigger physical indicator actuators, and control QA staging.</li>
+                            <li><strong>Circuitry & Assembly:</strong> Designed wire harnesses, power distribution, and component mounting schematics for factory-floor reliability.</li>
+                            <li><strong>Documentation & SOP:</strong> Authored the standard operating procedure (SOP), maintenance guidelines, and system schematics[cite: 5].</li>
+                        </ul>
+                    </div>
+
+                    <!-- Schematic Preview Action -->
+                    <div class="kiosk-cad-footer">
+                        <div>
+                            <h5>Hardware Schematics & Wiring Layout</h5>
+                            <p>Pinouts, communication buses, and electrical connections for the controller and optical module.</p>
+                        </div>
+                        <a href="3d_Design/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                            <i class="fas fa-file-pdf"></i> View Schematic (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `
+    },
     'elders': {
         title: 'Elder Rehabilitation Unit — 3D CAD Model',
         icon: 'fas fa-cube',
