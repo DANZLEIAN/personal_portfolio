@@ -380,7 +380,7 @@ const projectDetailsData = {
         `
     },
     'sentry': {
-        title: 'Vision QC Inspection Station — Sentry 2 & Arduino',
+        title: 'Smart Quality Control Station',
         icon: 'fas fa-microchip',
         primaryBtnText: 'Download Schematic PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
@@ -396,42 +396,42 @@ const projectDetailsData = {
                     </video>
                 </div>
 
-                <!-- Technical Specs & Engineering Documentation -->
+                <!-- Clear, Practical Overview -->
                 <div class="proj-modal-info">
-                    <h4>Edge AI Defect Classification & Telemetry</h4>
+                    <h4>Automated Product Defect Inspection</h4>
                     <p>
-                        Engineered as a standalone automated Quality Control (QC) station. The system deploys an onboard neural-network sensor paired with an Arduino Nano to classify molded items ("Good" vs. "Reject"), log defect modes (e.g., Cracking, Moisture, Black Spots), and provide immediate visual/auditory feedback on the line.
+                        Developed during an internship at James Polymers to speed up factory quality control. Operators place molded plastic products in front of the camera, and the system automatically checks for flaws like cracks, moisture marks, or black spots, instantly showing the result on an LCD and playing an audio prompt.
                     </p>
 
-                    <!-- Technical Metrics Grid -->
+                    <!-- Clean 4-Card Overview -->
                     <div class="kiosk-metrics-grid">
                         <div class="kiosk-metric-card">
-                            <span class="metric-num">K210 RISC-V</span>
-                            <span class="metric-lbl">64-bit Neural Processor</span>
+                            <span class="metric-num">Smart Camera</span>
+                            <span class="metric-lbl">Sentry 2 Vision</span>
                         </div>
                         <div class="kiosk-metric-card">
-                            <span class="metric-num">Dual 20x4</span>
-                            <span class="metric-lbl">I2C LCD Telemetry</span>
+                            <span class="metric-num">Arduino Nano</span>
+                            <span class="metric-lbl">Main Controller</span>
                         </div>
                         <div class="kiosk-metric-card">
-                            <span class="metric-num">UART / I2C</span>
-                            <span class="metric-lbl">Multi-Bus Interface</span>
+                            <span class="metric-num">Dual LCD</span>
+                            <span class="metric-lbl">Status & Detail Screens</span>
                         </div>
                         <div class="kiosk-metric-card">
-                            <span class="metric-num">4Ω Speaker</span>
-                            <span class="metric-lbl">DFPlayer Audio Alerts</span>
+                            <span class="metric-num">Speaker</span>
+                            <span class="metric-lbl">Pass / Fail Audio Alerts</span>
                         </div>
                     </div>
 
-                    <!-- Architecture Bullets -->
+                    <!-- Plain-English Implementation -->
                     <div class="kiosk-spec-block">
-                        <h5>Engineering Implementation</h5>
+                        <h5>How It Works</h5>
                         <ul>
-                            <li><strong>Edge Machine Vision:</strong> Utilized the Sentry 2 Vision Sensor (Kendryte K210 RISC-V AI core) operating at 240×240 resolution, trained via onboard joystick controls to identify Good and Rejected product classes.</li>
-                            <li><strong>Microcontroller State Machine:</strong> Programmed an Arduino Nano running finite-state logic (<code>STATE_DETECTING</code>, <code>STATE_SHOW_GOOD</code>, <code>STATE_SHOW_REJECT</code>) with multi-frame confidence thresholds (<code>MIN_DETECTION_CONFIDENCE</code>) to eliminate false triggers.</li>
-                            <li><strong>Multi-Channel Output:</strong> Integrated dual 20x4 character LCDs—one displaying item name, quality status, and reject reason; the other rendering custom large-font status displays using the <code>BigFont01_I2C</code> library.</li>
-                            <li><strong>Acoustic Feedback:</strong> Interfaced a DFPlayer Mini (UART pins 10/11) driving a 4Ω speaker to give instant auditory passes or warning alerts to machine operators.</li>
-                            <li><strong>Comprehensive SOP Documentation:</strong> Authored complete industrial operating manuals, wiring pinouts, product database array structures, and troubleshooting protocols.</li>
+                            <li><strong>Product Training:</strong> Uses the Sentry 2 camera to learn what acceptable and defective products look like from different angles.</li>
+                            <li><strong>Instant Decision:</strong> The Arduino reads the camera's scan and verifies the item over several frames before making a call to prevent false alarms.</li>
+                            <li><strong>Clear Feedback:</strong> One screen displays a large "GOOD" or "REJECT" status, while the second screen details the product name and reason for failure.</li>
+                            <li><strong>Sound Alerts:</strong> Plays clear pass or warning chimes through a connected speaker so operators don't have to stare at the screen.</li>
+                            <li><strong>User Guide & Schematics:</strong> Created step-by-step operating sheets, wiring diagrams, and troubleshooting manuals for factory operators.</li>
                         </ul>
                     </div>
 
@@ -439,7 +439,7 @@ const projectDetailsData = {
                     <div class="kiosk-cad-footer">
                         <div>
                             <h5>Circuit Schematics & Wiring Layout</h5>
-                            <p>Includes complete wiring tables (SDA/SCL on A4/A5, SoftwareSerial RX/TX, power distribution, and breadboard schematics).</p>
+                            <p>Complete breadboard wiring, pin connections, and power distribution diagrams.</p>
                         </div>
                         <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                             <i class="fas fa-file-pdf"></i> View Schematic (PDF)
