@@ -441,12 +441,14 @@ const projectDetailsData = {
                             <h5>Hardware Schematics & Operator Manual</h5>
                             <p>Complete wiring diagrams, pinout tables, and bilingual SOP documentation created for line operators.</p>
                         </div>
-                        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-                            <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                                <i class="fas fa-microchip"></i> View Schematic
+                        <div class="kiosk-cad-buttons">
+                            <a href="3d_Design/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                <i class="fas fa-microchip"></i>
+                                <span>View Schematic</span>
                             </a>
-                            <a href="Projects/SentryManual.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                                <i class="fas fa-book-open"></i> Read Manual (PDF)
+                            <a href="3d_Design/INSTRUCTION_MANUAL.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                <i class="fas fa-book-open"></i>
+                                <span>Read Manual (PDF)</span>
                             </a>
                         </div>
                     </div>
