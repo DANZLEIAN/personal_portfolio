@@ -438,12 +438,17 @@ const projectDetailsData = {
                     <!-- Schematic Preview Action -->
                     <div class="kiosk-cad-footer">
                         <div>
-                            <h5>Circuit Schematics & Wiring Layout</h5>
-                            <p>Complete breadboard wiring, pin connections, and power distribution diagrams.</p>
+                            <h5>Hardware Schematics & Operator Manual</h5>
+                            <p>Complete wiring diagrams, pinout tables, and bilingual SOP documentation created for line operators.</p>
                         </div>
-                        <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                            <i class="fas fa-file-pdf"></i> View Schematic (PDF)
-                        </a>
+                        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                            <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                <i class="fas fa-microchip"></i> View Schematic
+                            </a>
+                            <a href="Projects/SentryManual.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary" style="background: rgba(255, 255, 255, 0.08); border: 1px solid var(--sidebar-border);">
+                                <i class="fas fa-book-open"></i> Read Manual (PDF)
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
