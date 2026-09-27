@@ -380,11 +380,11 @@ const projectDetailsData = {
         `
     },
     'sentry': {
-        title: 'Vision QC Inspection Station — James Polymers',
+        title: 'Vision QC Inspection Station — Sentry 2 & Arduino',
         icon: 'fas fa-microchip',
         primaryBtnText: 'Download Schematic PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
-        primaryBtnHref: 'Projects/Schematic.pdf',
+        primaryBtnHref: '3d_Design/Schematic.pdf',
         downloadAttr: true,
         content: `
             <div class="kiosk-modal-container">
@@ -398,49 +398,50 @@ const projectDetailsData = {
 
                 <!-- Technical Specs & Engineering Documentation -->
                 <div class="proj-modal-info">
-                    <h4>Automated Defect Detection & Optical Sensing</h4>
+                    <h4>Edge AI Defect Classification & Telemetry</h4>
                     <p>
-                        Engineered during an industry internship at James Polymers Manufacturing Corporation[cite: 5]. This station automates visual defect inspection using real-time machine vision tracking to minimize manual QA overhead and logging latency[cite: 5].
+                        Engineered as a standalone automated Quality Control (QC) station. The system deploys an onboard neural-network sensor paired with an Arduino Nano to classify molded items ("Good" vs. "Reject"), log defect modes (e.g., Cracking, Moisture, Black Spots), and provide immediate visual/auditory feedback on the line.
                     </p>
 
                     <!-- Technical Metrics Grid -->
                     <div class="kiosk-metrics-grid">
                         <div class="kiosk-metric-card">
-                            <span class="metric-num">Sentry 2</span>
-                            <span class="metric-lbl">AI Vision Sensor</span>
+                            <span class="metric-num">K210 RISC-V</span>
+                            <span class="metric-lbl">64-bit Neural Processor</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Dual 20x4</span>
+                            <span class="metric-lbl">I2C LCD Telemetry</span>
                         </div>
                         <div class="kiosk-metric-card">
                             <span class="metric-num">UART / I2C</span>
-                            <span class="metric-lbl">Protocol Bus</span>
+                            <span class="metric-lbl">Multi-Bus Interface</span>
                         </div>
                         <div class="kiosk-metric-card">
-                            <span class="metric-num">Real-Time</span>
-                            <span class="metric-lbl">Defect Rejection</span>
-                        </div>
-                        <div class="kiosk-metric-card">
-                            <span class="metric-num">QA SOP</span>
-                            <span class="metric-lbl">Full Documentation</span>
+                            <span class="metric-num">4Ω Speaker</span>
+                            <span class="metric-lbl">DFPlayer Audio Alerts</span>
                         </div>
                     </div>
 
-                    <!-- Engineering Highlights -->
+                    <!-- Architecture Bullets -->
                     <div class="kiosk-spec-block">
                         <h5>Engineering Implementation</h5>
                         <ul>
-                            <li><strong>Optical Recognition:</strong> Integrated the Sentry 2 AI machine-vision module trained for object identification and surface anomaly rejection.</li>
-                            <li><strong>Microcontroller Automation:</strong> Programmed Arduino logic to process serial telemetry, trigger physical indicator actuators, and control QA staging.</li>
-                            <li><strong>Circuitry & Assembly:</strong> Designed wire harnesses, power distribution, and component mounting schematics for factory-floor reliability.</li>
-                            <li><strong>Documentation & SOP:</strong> Authored the standard operating procedure (SOP), maintenance guidelines, and system schematics[cite: 5].</li>
+                            <li><strong>Edge Machine Vision:</strong> Utilized the Sentry 2 Vision Sensor (Kendryte K210 RISC-V AI core) operating at 240×240 resolution, trained via onboard joystick controls to identify Good and Rejected product classes.</li>
+                            <li><strong>Microcontroller State Machine:</strong> Programmed an Arduino Nano running finite-state logic (<code>STATE_DETECTING</code>, <code>STATE_SHOW_GOOD</code>, <code>STATE_SHOW_REJECT</code>) with multi-frame confidence thresholds (<code>MIN_DETECTION_CONFIDENCE</code>) to eliminate false triggers.</li>
+                            <li><strong>Multi-Channel Output:</strong> Integrated dual 20x4 character LCDs—one displaying item name, quality status, and reject reason; the other rendering custom large-font status displays using the <code>BigFont01_I2C</code> library.</li>
+                            <li><strong>Acoustic Feedback:</strong> Interfaced a DFPlayer Mini (UART pins 10/11) driving a 4Ω speaker to give instant auditory passes or warning alerts to machine operators.</li>
+                            <li><strong>Comprehensive SOP Documentation:</strong> Authored complete industrial operating manuals, wiring pinouts, product database array structures, and troubleshooting protocols.</li>
                         </ul>
                     </div>
 
                     <!-- Schematic Preview Action -->
                     <div class="kiosk-cad-footer">
                         <div>
-                            <h5>Hardware Schematics & Wiring Layout</h5>
-                            <p>Pinouts, communication buses, and electrical connections for the controller and optical module.</p>
+                            <h5>Circuit Schematics & Wiring Layout</h5>
+                            <p>Includes complete wiring tables (SDA/SCL on A4/A5, SoftwareSerial RX/TX, power distribution, and breadboard schematics).</p>
                         </div>
-                        <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                        <a href="3d_Design/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                             <i class="fas fa-file-pdf"></i> View Schematic (PDF)
                         </a>
                     </div>
