@@ -384,7 +384,7 @@ const projectDetailsData = {
         icon: 'fas fa-microchip',
         primaryBtnText: 'Download Schematic PDF',
         primaryBtnIcon: 'fas fa-file-pdf',
-        primaryBtnHref: '3d_Design/Schematic.pdf',
+        primaryBtnHref: 'Projects/Schematic.pdf',
         downloadAttr: true,
         content: `
             <div class="kiosk-modal-container">
@@ -440,7 +440,7 @@ const projectDetailsData = {
                             <h5>Hardware Schematics & Wiring Layout</h5>
                             <p>Pinouts, communication buses, and electrical connections for the controller and optical module.</p>
                         </div>
-                        <a href="3d_Design/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                        <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                             <i class="fas fa-file-pdf"></i> View Schematic (PDF)
                         </a>
                     </div>
