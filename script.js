@@ -442,11 +442,11 @@ const projectDetailsData = {
                             <p>Complete wiring diagrams, pinout tables, and bilingual SOP documentation created for line operators.</p>
                         </div>
                         <div class="kiosk-cad-buttons">
-                            <a href="3d_Design/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                            <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                                 <i class="fas fa-microchip"></i>
                                 <span>View Schematic</span>
                             </a>
-                            <a href="3d_Design/INSTRUCTION_MANUAL.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                            <a href="Projects/SentryManual.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                                 <i class="fas fa-book-open"></i>
                                 <span>Read Manual (PDF)</span>
                             </a>
