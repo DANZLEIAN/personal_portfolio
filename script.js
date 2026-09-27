@@ -445,7 +445,7 @@ const projectDetailsData = {
                             <a href="Projects/Schematic.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                                 <i class="fas fa-microchip"></i> View Schematic
                             </a>
-                            <a href="Projects/INSTRUCTION_MANUAL.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-secondary">
+                            <a href="Projects/SentryManual.pdf" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
                                 <i class="fas fa-book-open"></i> Read Manual (PDF)
                             </a>
                         </div>
