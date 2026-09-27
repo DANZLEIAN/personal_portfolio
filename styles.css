@@ -749,6 +749,55 @@ body {
     flex-direction: column;
 }
 
+/* Ensure the Header Primary/Download button has high-contrast white text on its purple gradient */
+.project-modal-header .doc-btn-download,
+#projectModalPrimaryBtn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.project-modal-header .doc-btn-download i,
+.project-modal-header .doc-btn-download span,
+#projectModalPrimaryBtn i,
+#projectModalPrimaryBtn span {
+    color: #ffffff !important;
+}
+
+/* Secondary Button (Read Manual) theming */
+.btn-project-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text) !important;
+    border: 1px solid var(--sidebar-border);
+}
+
+.btn-project-secondary:hover {
+    background: rgba(78, 84, 200, 0.15);
+    border-color: var(--primary);
+    color: var(--primary) !important;
+}
+
+/* Light Mode Overrides */
+body.light-theme .btn-project-secondary {
+    background: #e2e8f0;
+    color: #1e293b !important;
+    border-color: #cbd5e1;
+}
+
+body.light-theme .btn-project-secondary:hover {
+    background: #cbd5e1;
+    color: var(--primary) !important;
+}
+
 /* Video Showcase Layout for Escape */
 .proj-modal-video-container {
     width: 100%;
