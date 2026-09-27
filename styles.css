@@ -714,6 +714,14 @@ body {
     border-bottom: 1px solid var(--sidebar-border);
 }
 
+.project-modal-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-shrink: 0;
+}
+
 .project-modal-title-group {
     display: flex;
     align-items: center;
