@@ -1070,6 +1070,18 @@ body.light-theme .btn-project-secondary:hover {
     }    
 }
 
+@media (max-width: 1024px) {
+    .project-card .project-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .project-card .project-actions .btn-project {
+        width: 100% !important;
+        flex: none !important;
+    }
+}
+
 /* ============================================
    Skills & Services
    ============================================ */
