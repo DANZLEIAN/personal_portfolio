@@ -658,6 +658,27 @@ body {
     color: #fff;
 }
 
+/* Base desktop behavior for card buttons */
+.project-card .project-actions {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.project-card .project-actions .btn-project {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.75rem 0.8rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
 /* ============================================
    Project Details Modal Styling
    ============================================ */
@@ -1016,6 +1037,8 @@ body.light-theme .btn-project-secondary:hover {
     flex-wrap: wrap;
     align-items: center;
 }
+
+
 
 /* Mobile: Stretch buttons cleanly with centered contents */
 @media (max-width: 600px) {
