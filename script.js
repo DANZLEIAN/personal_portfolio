@@ -495,6 +495,76 @@ const projectDetailsData = {
         downloadAttr: true,
         content: `<iframe src="Projects/lockify.pdf" class="proj-modal-pdf-frame" title="Lockify Project Documentation"></iframe>`
     },
+    'tourgo': {
+        title: 'TourGO — Demo Access & Backend Architecture',
+        icon: 'fas fa-car',
+        primaryBtnText: 'Open Live Demo',
+        primaryBtnIcon: 'fas fa-external-link-alt',
+        primaryBtnHref: 'https://jonelba.github.io/TourGO/',
+        downloadAttr: false,
+        content: `
+            <div class="kiosk-modal-container">
+                <div class="proj-modal-info">
+                    <h4>Interactive Live Preview & System Roles</h4>
+                    <p>
+                        TourGO was originally developed as a full-stack platform using <strong>HTML, CSS, JavaScript, PHP</strong>, and a relational database managed through <strong>phpMyAdmin</strong>. The live preview hosted on GitHub Pages showcases the client-side experience and simulated role access.
+                    </p>
+
+                    <!-- Credentials Cards Grid -->
+                    <div class="kiosk-metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="kiosk-metric-card" style="text-align: left; padding: 1.2rem;">
+                            <div style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-user"></i> Customer Account
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--text); margin-bottom: 0.25rem;"><strong>Email:</strong> customer@tourgo.demo</div>
+                            <div style="font-size: 0.85rem; color: var(--gray);"><strong>Password:</strong> Demo1234!</div>
+                        </div>
+
+                        <div class="kiosk-metric-card" style="text-align: left; padding: 1.2rem;">
+                            <div style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-building"></i> Agency Account
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--text); margin-bottom: 0.25rem;"><strong>Email:</strong> agency@tourgo.demo</div>
+                            <div style="font-size: 0.85rem; color: var(--gray);"><strong>Password:</strong> Demo1234!</div>
+                        </div>
+
+                        <div class="kiosk-metric-card" style="text-align: left; padding: 1.2rem;">
+                            <div style="font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <i class="fas fa-shield-alt"></i> Admin Account
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--text); margin-bottom: 0.25rem;"><strong>Email:</strong> admin@tourgo.demo</div>
+                            <div style="font-size: 0.85rem; color: var(--gray);"><strong>Password:</strong> TourGOAdmin@2026!</div>
+                        </div>
+                    </div>
+
+                    <!-- Architecture Overview -->
+                    <div class="kiosk-spec-block">
+                        <h5>Engineering Implementation & Role Division</h5>
+                        <ul>
+                            <li><strong>Backend Architecture:</strong> Developed the relational database schemas in MySQL/phpMyAdmin for vehicle listings, booking reservations, customer profiles, and rental rate logs.</li>
+                            <li><strong>Authentication Logic:</strong> Designed the role-based access control (RBAC) separating public renters, rental agency managers, and administrative users.</li>
+                            <li><strong>Booking Validation:</strong> Built scheduling validation logic to manage rental availability and prevent schedule collisions.</li>
+                            <li><strong>Collaborative Build:</strong> Frontend user interface and layout styling developed by project collaborator; backend logic and data architecture developed by Danzle Ian.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Footer Link -->
+                    <div class="kiosk-cad-footer">
+                        <div>
+                            <h5>Explore the Live Interface</h5>
+                            <p>Test out vehicle browsing, agency dashboard features, and reservation workflows directly on the web preview.</p>
+                        </div>
+                        <div class="kiosk-cad-buttons">
+                            <a href="https://jonelba.github.io/TourGO/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Launch TourGO Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    },
 };
 
 function openProjectModal(projectId) {
