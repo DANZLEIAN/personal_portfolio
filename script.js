@@ -547,20 +547,6 @@ const projectDetailsData = {
                             <li><strong>Collaborative Build:</strong> Frontend user interface and layout styling developed by project collaborator; backend logic and data architecture developed by Danzle Ian.</li>
                         </ul>
                     </div>
-
-                    <!-- Footer Link -->
-                    <div class="kiosk-cad-footer">
-                        <div>
-                            <h5>Explore the Live Interface</h5>
-                            <p>Test out vehicle browsing, agency dashboard features, and reservation workflows directly on the web preview.</p>
-                        </div>
-                        <div class="kiosk-cad-buttons">
-                            <a href="https://jonelba.github.io/TourGO/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Launch TourGO Demo</span>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         `
