@@ -1046,6 +1046,28 @@ body.light-theme .btn-project-secondary:hover {
     .kiosk-cad-buttons .btn-project i {
         margin-right: 0.4rem;
     }
+
+    /* Make card action buttons stretch full-width and center align */
+    .project-card .project-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0.65rem !important;
+    }
+
+    .project-card .project-actions .btn-project {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0.75rem 1rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .project-card .project-actions .btn-project i {
+        margin-right: 0.5rem;
+    }    
 }
 
 /* ============================================
