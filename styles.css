@@ -658,25 +658,25 @@ body {
     color: #fff;
 }
 
-/* Base desktop behavior for card buttons */
 .project-card .project-actions {
     display: flex;
-    gap: 0.65rem;
+    gap: 0.6rem;
     align-items: center;
     width: 100%;
     margin-top: auto;
+    flex-wrap: wrap; /* Allows natural wrapping if titles are long */
 }
 
+/* Base button styles */
 .project-card .project-actions .btn-project {
-    flex: 1 1 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0.75rem 0.8rem;
-    font-size: 0.85rem;
-    white-space: nowrap;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.82rem;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 /* ============================================
@@ -1102,6 +1102,20 @@ body.light-theme .btn-project-secondary:hover {
     .project-card .project-actions .btn-project {
         width: 100% !important;
         flex: none !important;
+    }
+}
+
+/* Whenever screen is 1350px or narrower (including when DevTools is open or on tablet/phone) */
+@media (max-width: 1350px) {
+    .project-card .project-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.6rem !important;
+    }
+
+    .project-card .project-actions .btn-project {
+        width: 100% !important;
+        white-space: normal !important; /* Prevents overflow */
     }
 }
 
