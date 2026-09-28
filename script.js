@@ -494,7 +494,70 @@ const projectDetailsData = {
         primaryBtnHref: 'Projects/lockify.pdf',
         downloadAttr: true,
         content: `<iframe src="Projects/lockify.pdf" class="proj-modal-pdf-frame" title="Lockify Project Documentation"></iframe>`
-    }
+    },
+    'tourgo': {
+        title: 'TourGO — Car Rental & Reservation Platform',
+        icon: 'fas fa-car',
+        primaryBtnText: 'Open Live Demo',
+        primaryBtnIcon: 'fas fa-external-link-alt',
+        primaryBtnHref: 'https://jonelba.github.io/TourGO/',
+        downloadAttr: false,
+        content: `
+            <div class="kiosk-modal-container">
+                <div class="proj-modal-info">
+                    <h4>Collaborative Vehicle Rental & Booking Platform</h4>
+                    <p>
+                        TourGO provides customers with an interactive platform to browse available vehicles, compare rental rates, and submit reservation requests. Engineered as a team project where I focused on backend systems, data flow design, and booking validation logic, paired with frontend UI integration by my project partner.
+                    </p>
+
+                    <!-- Technical Metrics Grid -->
+                    <div class="kiosk-metrics-grid">
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Backend</span>
+                            <span class="metric-lbl">Lead Role & Focus</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Fleet Mgmt</span>
+                            <span class="metric-lbl">Vehicle Cataloging</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Scheduling</span>
+                            <span class="metric-lbl">Reservation Logic</span>
+                        </div>
+                        <div class="kiosk-metric-card">
+                            <span class="metric-num">Team Build</span>
+                            <span class="metric-lbl">Frontend / Backend Split</span>
+                        </div>
+                    </div>
+
+                    <!-- Role Breakdown -->
+                    <div class="kiosk-spec-block">
+                        <h5>Engineering Implementation & Role</h5>
+                        <ul>
+                            <li><strong>Booking & Reservation Flow:</strong> Structured the scheduling logic that tracks rental periods, prevents schedule overlaps, and manages vehicle availability states.</li>
+                            <li><strong>Data Modeling & Schema Design:</strong> Formulated entities for vehicle listings, category filtering, customer contact info, and rental cost structures.</li>
+                            <li><strong>Integration & Data Handling:</strong> Handled client request workflows to process reservation submissions from the frontend interfaces cleanly.</li>
+                            <li><strong>Collaborative Delivery:</strong> Coordinated API contracts and data structure handoffs with the frontend developer to ensure seamless presentation on the live site.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Footer & Attribution -->
+                    <div class="kiosk-cad-footer">
+                        <div>
+                            <h5>Project Division of Work</h5>
+                            <p>Backend logic, data modeling, and booking workflows by Danzle Ian. User interface styling and frontend presentation by collaborative project partner.</p>
+                        </div>
+                        <div class="kiosk-cad-buttons">
+                            <a href="https://jonelba.github.io/TourGO/" target="_blank" rel="noopener noreferrer" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Visit TourGO Live</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+    },
 };
 
 function openProjectModal(projectId) {
